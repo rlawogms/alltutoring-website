@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다양한 경력의 선생님 소개 - 전과목 1:1 맞춤 과외</title>
+<meta name="description" content="현직 교사부터 명문대 재학생까지, 전과목 1:1 맞춤 과외의 다양한 경력의 선생님들을 소개합니다." />
+<link rel="canonical" href="https://alltutoring-website.co.kr/teachers.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="다양한 경력의 선생님 소개 - 전과목 1:1 맞춤 과외" />
+<meta property="og:description" content="현직 교사부터 명문대 재학생까지, 전과목 1:1 맞춤 과외의 다양한 경력의 선생님들을 소개합니다." />
+<meta property="og:url" content="https://alltutoring-website.co.kr/teachers.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<script>
+  function handleCallBtn(e) {
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      window.location.href = 'index.html#consult';
+    }
+  }
+</script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff; word-break: keep-all; }
+
+.navbar {
+  position: sticky; top: 0; z-index: 1000;
+  background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 32px;
+}
+.navbar-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0D2B6B; font-size: 16px; text-decoration: none; white-space: nowrap; }
+.navbar-brand img { width: 26px; height: 26px; }
+.navbar-links { display: flex; align-items: center; gap: 20px; }
+.navbar-links a.nav-link { color: #444; font-size: 14px; font-weight: 500; text-decoration: none; padding: 6px 2px; border-bottom: 2px solid transparent; white-space: nowrap; }
+.navbar-links a.nav-link:hover, .navbar-links a.nav-link.active { color: #0D2B6B; border-bottom-color: #FFB400; }
+.navbar-cta { background: #0D2B6B; color: #fff; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 20px; text-decoration: none; white-space: nowrap; }
+.navbar-cta:hover { background: #0a2054; }
+@media (max-width: 600px) {
+  .navbar { padding: 10px 16px; }
+  .navbar-brand span { display: none; }
+  .navbar-links { gap: 12px; }
+  .navbar-links a.nav-link { font-size: 13px; }
+  .navbar-cta { padding: 8px 12px; font-size: 12px; }
+}
+
+.feed-header { background: #F6F2EA; padding: 56px 40px 8px; }
+.feed-title { font-size: 34px; font-weight: 800; color: #1a1a1a; line-height: 1.35; }
+.feed-accent { color: #E05A2B; }
+.feed-notice { margin-top: 16px; font-size: 13px; color: #8a8a80; line-height: 1.7; display: flex; align-items: center; gap: 6px; }
+
+.feed-section { padding: 36px 40px 60px; background: #F6F2EA; }
+.teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+.teacher-card {
+  background: #fff; border: 1px solid #E0E6F0; border-radius: 12px;
+  padding: 22px 18px; display: flex; gap: 16px; align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.teacher-card:hover { box-shadow: 0 4px 16px rgba(13,43,107,0.08); }
+.teacher-avatar {
+  width: 54px; height: 54px; min-width: 54px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700;
+}
+.av-blue { background: #E8EFFE; color: #0D2B6B; }
+.av-amber { background: #FFF3D0; color: #7A4F00; }
+.av-teal { background: #E0F5EE; color: #0A5E42; }
+.av-purple { background: #F0E8FE; color: #5B2B8B; }
+.av-rose { background: #FDE8EF; color: #9A2255; }
+.av-sky { background: #E3F3FC; color: #0A5A8C; }
+.teacher-badge {
+  display: inline-block; background: #FFB400; color: #3D2700;
+  font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin-bottom: 6px;
+}
+.teacher-name { font-size: 16px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+.teacher-desc { font-size: 13px; color: #666; line-height: 1.7; }
+
+.cta-section { background: #FFF3E0; padding: 48px 40px; text-align: center; }
+.cta-section h2 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; }
+.cta-section p { font-size: 14px; color: rgba(0,0,0,0.6); margin-bottom: 24px; line-height: 1.8; }
+.btn-primary {
+  background: #FFB400; color: #0D2B6B; border: none;
+  padding: 14px 30px; border-radius: 8px; font-size: 15px; font-weight: 700;
+  cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+  text-decoration: none; display: inline-block;
+}
+
+.footer { background: #0D1C3B; color: rgba(255,255,255,0.6); padding: 40px; font-size: 13px; line-height: 1.9; }
+.footer strong { color: rgba(255,255,255,0.9); font-size: 16px; display: block; margin-bottom: 10px; }
+
+.floating-btn {
+  position: fixed; bottom: 28px; right: 24px;
+  background: #FFB400; color: #0D2B6B; font-weight: 700; font-size: 14px;
+  padding: 14px 22px; border-radius: 30px; border: none; cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif; box-shadow: 0 4px 16px rgba(255,180,0,0.4);
+  display: flex; align-items: center; gap: 8px; z-index: 999;
+  text-decoration: none; transition: transform 0.2s;
+}
+.floating-btn:hover { transform: translateY(-2px); }
+
+@media (max-width: 600px) {
+  .feed-header { padding: 40px 20px 6px; }
+  .feed-title { font-size: 24px; }
+  .feed-section, .cta-section { padding: 32px 20px; }
+  .footer { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand"><img src="favicon.svg" alt="전과목 1:1 과외"><span>전과목 1:1 과외</span></a>
+  <div class="navbar-links">
+    <a href="index.html" class="nav-link">홈</a>
+    <a href="index.html#about" class="nav-link">수업 방식</a>
+    <a href="teachers.html" class="nav-link active">선생님</a>
+    <a href="reviews.html" class="nav-link">후기</a>
+    <a href="index.html#consult" class="navbar-cta">상담신청</a>
+  </div>
+</nav>
+
+<section class="feed-header">
+  <h1 class="feed-title">다양한 경력의 <span class="feed-accent">선생님</span> 소개</h1>
+  <p class="feed-notice"><i class="ti ti-info-circle"></i> 현직 교사부터 명문대 재학생까지, 학생의 목표와 성향에 맞는 선생님을 매칭해드립니다. 실제 배정 선생님의 경력 사항은 지역·과목에 따라 상이할 수 있습니다.</p>
+</section>
+
+<section class="feed-section">
+  <div class="teacher-grid">
+    <div class="teacher-card">
+      <div class="teacher-avatar av-blue">김</div>
+      <div>
+        <div class="teacher-badge">현직 고등 교사</div>
+        <div class="teacher-name">김○○ 선생님 · 수학</div>
+        <div class="teacher-desc">現 고등학교 수학 교사 · 임용 경력 9년<br>내신 출제 경향과 수능 연계 학습에 강점, 방문·화상 수업 모두 가능</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar av-amber">박</div>
+      <div>
+        <div class="teacher-badge">前 대형학원 강사</div>
+        <div class="teacher-name">박○○ 선생님 · 영어</div>
+        <div class="teacher-desc">前 대형 어학원 대표강사 · 경력 12년<br>회화·문법·독해 전 영역 지도, 원어민 발음 교정 및 내신·수능 병행 지도</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar av-teal">이</div>
+      <div>
+        <div class="teacher-badge">명문대 재학생</div>
+        <div class="teacher-name">이○○ 선생님 · 국어</div>
+        <div class="teacher-desc">서울 소재 국어국문학과 재학 · 수능 국어 만점<br>또래 눈높이에 맞춘 친근한 수업 진행, 비대면 화상 수업 전문</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar av-sky">최</div>
+      <div>
+        <div class="teacher-badge">임용고시 합격</div>
+        <div class="teacher-name">최○○ 선생님 · 과학</div>
+        <div class="teacher-desc">중등 과학 임용고시 합격 · 과외 지도 경력 6년<br>실험 원리부터 개념까지 체계적으로 연결하는 수업, 방문 수업 가능</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar av-rose">정</div>
+      <div>
+        <div class="teacher-badge">사회탐구 전문</div>
+        <div class="teacher-name">정○○ 선생님 · 사회</div>
+        <div class="teacher-desc">공무원 수험 전문 강사 출신 · 경력 10년<br>방대한 암기량을 흐름과 구조로 정리해주는 개념 중심 수업</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar av-purple">한</div>
+      <div>
+        <div class="teacher-badge">유학파 선생님</div>
+        <div class="teacher-name">한○○ 선생님 · 영어</div>
+        <div class="teacher-desc">해외 대학 졸업 · 5년 거주 경험 · 경력 7년<br>원어민 수준의 회화 지도와 에세이 첨삭, 비대면 화상 수업 전문</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="consult">
+  <h2>우리 아이 맞춤 선생님을 만나보세요</h2>
+  <p>📞 <strong style="color:#0D2B6B;">010-8411-7380</strong><br>무료 매칭 상담 신청 시 조건에 맞는 선생님을 안내해드립니다</p>
+  <a href="index.html#consult" class="btn-primary">무료 매칭 상담 신청하기</a>
+</section>
+
+<footer class="footer">
+  <strong>동화세상에듀코원격평생교육학원</strong>
+  (주)동화세상에듀코 | 대표자 김영철 | 사업자등록번호 201-81-27348<br>
+  통신판매번호 : 2009-서울동대문-0409 | 대표전화 : 1899-2277<br>
+  서울특별시 동대문구 왕산로 25 (신설동 89-79)<br>
+  학원설립운영등록번호 : 제2773호 동화세상에듀코원격평생교육학원<br><br>
+  © 2026 (주)동화세상에듀코. All rights reserved.
+</footer>
+
+<a href="index.html#consult" class="floating-btn" onclick="handleCallBtn(event)">
+  <i class="ti ti-phone"></i> 무료 매칭 상담
+</a>
+
+</body>
+</html>
