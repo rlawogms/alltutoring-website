@@ -346,27 +346,27 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
     <button class="tab" onclick="setTab(this)">고등</button>
   </div>
   <div class="subject-grid">
-    <div class="subject-card">
+    <div class="subject-card" data-desc-all="문학·비문학 독해<br>논술 및 서술형 대비" data-desc-elem="읽기 독해력 기초 다지기<br>어휘력·글쓰기 습관 형성" data-desc-mid="문학·비문학 독해<br>내신 서술형 대비" data-desc-high="수능 국어 독해 전략<br>논술 및 심화 학습">
       <span class="subject-icon"><i class="ti ti-book" style="color:#7A2B00;"></i></span>
       <div class="subject-name">국어</div>
       <div class="subject-desc">문학·비문학 독해<br>논술 및 서술형 대비</div>
     </div>
-    <div class="subject-card">
+    <div class="subject-card" data-desc-all="회화·문법·독해·내신<br>목표별 집중 수업" data-desc-elem="파닉스·기초 회화 학습<br>흥미 중심 영어 노출" data-desc-mid="문법·독해 기초 다지기<br>내신 대비 집중 학습" data-desc-high="수능 영어 독해·어법<br>내신 등급 관리">
       <span class="subject-icon"><i class="ti ti-language" style="color:#1A6B3C;"></i></span>
       <div class="subject-name">영어</div>
       <div class="subject-desc">회화·문법·독해·내신<br>목표별 집중 수업</div>
     </div>
-    <div class="subject-card">
+    <div class="subject-card" data-desc-all="개념 완성부터 심화까지<br>단계별 맞춤 커리큘럼" data-desc-elem="연산·사고력 기초 다지기<br>수학에 대한 흥미 형성" data-desc-mid="개념 완성 및 내신 대비<br>학교별 시험 유형 분석" data-desc-high="수능 유형 심화 학습<br>내신 1등급 전략 수립">
       <span class="subject-icon"><i class="ti ti-math-function"></i></span>
       <div class="subject-name">수학</div>
       <div class="subject-desc">개념 완성부터 심화까지<br>단계별 맞춤 커리큘럼</div>
     </div>
-    <div class="subject-card">
+    <div class="subject-card" data-desc-all="물리·화학·생명·지구과학<br>개념·내신 집중 대비" data-desc-elem="실생활 연계 과학 탐구<br>호기심 자극 체험 학습" data-desc-mid="물리·화학·생명·지구과학<br>개념 이해 및 내신 대비" data-desc-high="과목별 심화 개념 학습<br>수능·내신 병행 대비">
       <span class="subject-icon"><i class="ti ti-atom" style="color:#553AA0;"></i></span>
       <div class="subject-name">과학</div>
       <div class="subject-desc">물리·화학·생명·지구과학<br>개념·내신 집중 대비</div>
     </div>
-    <div class="subject-card">
+    <div class="subject-card" data-desc-all="역사·지리·일반사회<br>암기 부담을 줄이는 개념 학습" data-desc-elem="사회 현상 흥미 유도<br>기초 개념 이해 중심" data-desc-mid="역사·지리·일반사회<br>흐름 중심 개념 정리" data-desc-high="사회탐구 영역 심화 학습<br>수능·내신 병행 대비">
       <span class="subject-icon"><i class="ti ti-world" style="color:#0A5A8C;"></i></span>
       <div class="subject-name">사회</div>
       <div class="subject-desc">역사·지리·일반사회<br>암기 부담을 줄이는 개념 학습</div>
@@ -884,6 +884,11 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 function setTab(el) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
+  var gradeKey = { '전체': 'all', '초등': 'elem', '중등': 'mid', '고등': 'high' }[el.textContent.trim()];
+  document.querySelectorAll('.subject-card').forEach(function(card) {
+    var desc = card.getAttribute('data-desc-' + gradeKey);
+    if (desc) card.querySelector('.subject-desc').innerHTML = desc;
+  });
 }
 </script>
 </body>
