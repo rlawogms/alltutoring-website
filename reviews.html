@@ -83,6 +83,17 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 }
 .floating-btn:hover { transform: translateY(-2px); }
 
+.top-btn {
+  position: fixed; bottom: 28px; left: 24px;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #0D2B6B; color: #fff; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+  box-shadow: 0 4px 16px rgba(13,43,107,0.35); z-index: 999;
+  opacity: 0; pointer-events: none; transform: translateY(10px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.top-btn.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
 @media (max-width: 600px) {
   .feed-header { padding: 40px 20px 6px; }
   .feed-title { font-size: 24px; }
@@ -171,6 +182,19 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 <a href="index.html#consult" class="floating-btn" onclick="handleCallBtn(event)">
   <i class="ti ti-phone"></i> 무료 매칭 상담
 </a>
+
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로">
+  <i class="ti ti-arrow-up"></i>
+</button>
+<script>
+  (function() {
+    var btn = document.getElementById('topBtn');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 400) { btn.classList.add('show'); }
+      else { btn.classList.remove('show'); }
+    });
+  })();
+</script>
 
 </body>
 </html>
