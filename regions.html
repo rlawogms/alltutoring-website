@@ -118,7 +118,8 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   font-size: 22px; line-height: 1; color: #999; cursor: pointer; padding: 4px;
 }
 .school-modal-title { font-size: 17px; font-weight: 700; color: #0D2B6B; margin-bottom: 4px; padding-right: 24px; }
-.school-modal-count { font-size: 13px; color: #999; margin-bottom: 14px; }
+.school-modal-count { font-size: 13px; color: #999; margin-bottom: 4px; }
+.school-modal-hint { font-size: 12px; color: #0D2B6B; background: #F0F6FF; border-radius: 8px; padding: 8px 10px; margin-bottom: 14px; line-height: 1.6; }
 .school-modal-search {
   width: 100%; padding: 9px 12px; border-radius: 8px; margin-bottom: 14px;
   border: 1.5px solid #ddd6c8; font-size: 13px; font-family: 'Noto Sans KR', sans-serif; outline: none;
@@ -601,6 +602,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   <button class="school-modal-close" onclick="closeRegionModal()" aria-label="닫기">&times;</button>
   <div class="school-modal-title" id="schoolModalTitle"></div>
   <div class="school-modal-count" id="schoolModalCount"></div>
+  <div class="school-modal-hint" id="schoolModalHint"></div>
   <input type="text" class="school-modal-search" id="schoolModalSearch" placeholder="학교명, 동·읍·면 검색 (예: 문래동 문래초)" oninput="renderSchoolModal()">
   <div class="dong-chip-row" id="schoolModalDongRow"></div>
   <div id="schoolModalBody"></div>
@@ -643,12 +645,29 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   var currentSchoolKey = null;
   var currentDongFilter = null;
 
+  var SUBJECTS = ['국어','영어','수학','과학','사회'];
+  function hashKey(s) {
+    var h = 0;
+    for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) % 997; }
+    return h;
+  }
+
   function openRegionModal(key) {
     currentSchoolKey = key;
     currentDongFilter = null;
     var parts = key.split('|');
     document.getElementById('schoolModalTitle').textContent = parts[0].replace(/\([^)]*\)/,'') + ' ' + parts[1];
     document.getElementById('schoolModalSearch').value = '';
+    var dongList = getCurrentList().map(function(s) { return s.d; }).filter(function(d, i, arr) { return d && arr.indexOf(d) === i; });
+    var hintEl = document.getElementById('schoolModalHint');
+    if (dongList.length) {
+      var h = hashKey(key);
+      var d1 = dongList[0], d2 = dongList[Math.min(1, dongList.length - 1)];
+      var s1 = SUBJECTS[h % 5], s2 = SUBJECTS[(h + 2) % 5];
+      hintEl.textContent = '💬 ' + d1 + ' ' + s1 + ' 과외, ' + d2 + ' ' + s2 + ' 과외 등 ' + parts[1] + ' 전 지역에서 과목별 맞춤 과외 매칭이 가능합니다.';
+    } else {
+      hintEl.textContent = '';
+    }
     renderDongChips();
     renderSchoolModal();
     document.getElementById('schoolModal').classList.add('show');

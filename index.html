@@ -214,6 +214,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   display: inline-block; background: #fff; border: 1px solid #E5E1D8;
   border-radius: 6px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #555;
 }
+.dong-seo-hint { margin-top: 8px; font-size: 11px; color: #0D2B6B; line-height: 1.6; }
 .region-note { margin-top: 18px; background: #FFF3E0; border-radius: 12px; padding: 16px 20px; font-size: 13.5px; color: #6b4c00; line-height: 1.7; }
 .region-more-wrap { text-align: center; margin-top: 20px; }
 .region-more-btn {
@@ -1488,8 +1489,15 @@ window.DONG_DATA = {
 "충청북도|청주시":["송절동","오송읍","남일면","복대동","가덕면","오창읍","남이면","강내면","비하동","개신동","가경동","교동","금천동","분평동","낭성면","내수읍","방서동","북이면","수동","신봉동","우암동","율량동","모충동","문의면","미원면","봉명동","주중동","사직동","사천동","산남동","용담동","용암동","서촌동","석교동","성화동","미평동","수곡동","옥산면","현도면","월오동","용정동","운천동","탑동","영동","죽림동","사창동","영운동","내덕동","현암동","공동"],
 };
 
+var SUBJECTS = ['국어','영어','수학','과학','사회'];
+function hashKey(s) {
+  var h = 0;
+  for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) % 997; }
+  return h;
+}
 function toggleDong(btn) {
   var key = btn.dataset.key;
+  var label = btn.textContent;
   var container = btn.closest('.region-chips');
   var existing = container.querySelector('.dong-panel');
   var wasOpenForThis = existing && existing.dataset.forKey === key;
@@ -1500,9 +1508,16 @@ function toggleDong(btn) {
   var panel = document.createElement('div');
   panel.className = 'dong-panel';
   panel.dataset.forKey = key;
-  panel.innerHTML = dongs.length
-    ? dongs.map(function(d) { return '<span class="dong-tag">' + d + '</span>'; }).join('')
-    : '동·읍·면 정보가 없습니다.';
+  if (dongs.length) {
+    var tagsHtml = dongs.map(function(d) { return '<span class="dong-tag">' + d + '</span>'; }).join('');
+    var h = hashKey(key);
+    var d1 = dongs[0], d2 = dongs[Math.min(1, dongs.length - 1)];
+    var s1 = SUBJECTS[h % 5], s2 = SUBJECTS[(h + 2) % 5];
+    var hint = '<div class="dong-seo-hint">💬 ' + d1 + ' ' + s1 + ' 과외, ' + d2 + ' ' + s2 + ' 과외 등 ' + label + ' 전 지역에서 과목별 맞춤 과외 매칭이 가능합니다.</div>';
+    panel.innerHTML = tagsHtml + hint;
+  } else {
+    panel.textContent = '동·읍·면 정보가 없습니다.';
+  }
   btn.insertAdjacentElement('afterend', panel);
   btn.classList.add('active');
 }
