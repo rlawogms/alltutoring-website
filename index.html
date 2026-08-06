@@ -200,7 +200,19 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 .region-chip {
   background: #F0F6FF; border-radius: 8px; padding: 5px 10px;
   font-size: 12.5px; font-weight: 500; color: #333;
-  display: inline-block;
+  display: inline-block; border: none; cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.region-chip:hover { background: #E0E6F0; }
+.region-chip.active { background: #0D2B6B; color: #fff; }
+.dong-panel {
+  flex-basis: 100%; width: 100%; margin-top: 4px;
+  background: #F8F6F0; border: 1px solid #E5E1D8; border-radius: 8px;
+  padding: 8px 10px; font-size: 11.5px; color: #888;
+}
+.dong-tag {
+  display: inline-block; background: #fff; border: 1px solid #E5E1D8;
+  border-radius: 6px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #555;
 }
 .region-note { margin-top: 18px; background: #FFF3E0; border-radius: 12px; padding: 16px 20px; font-size: 13.5px; color: #6b4c00; line-height: 1.7; }
 .region-more-wrap { text-align: center; margin-top: 20px; }
@@ -415,318 +427,318 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
     <div class="region-group">
       <div class="region-group-title">서울</div>
       <div class="region-chips">
-        <span class="region-chip">강남구</span>
-        <span class="region-chip">강동구</span>
-        <span class="region-chip">강북구</span>
-        <span class="region-chip">강서구</span>
-        <span class="region-chip">관악구</span>
-        <span class="region-chip">광진구</span>
-        <span class="region-chip">구로구</span>
-        <span class="region-chip">금천구</span>
-        <span class="region-chip">노원구</span>
-        <span class="region-chip">도봉구</span>
-        <span class="region-chip">동대문구</span>
-        <span class="region-chip">동작구</span>
-        <span class="region-chip">마포구</span>
-        <span class="region-chip">서대문구</span>
-        <span class="region-chip">서초구</span>
-        <span class="region-chip">성동구</span>
-        <span class="region-chip">성북구</span>
-        <span class="region-chip">송파구</span>
-        <span class="region-chip">양천구</span>
-        <span class="region-chip">영등포구</span>
-        <span class="region-chip">용산구</span>
-        <span class="region-chip">은평구</span>
-        <span class="region-chip">종로구</span>
-        <span class="region-chip">중구</span>
-        <span class="region-chip">중랑구</span>
-        <span class="region-chip">기타</span>
+        <button type="button" class="region-chip" data-key="서울특별시|강남구" onclick="toggleDong(this)">강남구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|강동구" onclick="toggleDong(this)">강동구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|강북구" onclick="toggleDong(this)">강북구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|강서구" onclick="toggleDong(this)">강서구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|관악구" onclick="toggleDong(this)">관악구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|광진구" onclick="toggleDong(this)">광진구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|구로구" onclick="toggleDong(this)">구로구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|금천구" onclick="toggleDong(this)">금천구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|노원구" onclick="toggleDong(this)">노원구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|도봉구" onclick="toggleDong(this)">도봉구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|동대문구" onclick="toggleDong(this)">동대문구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|동작구" onclick="toggleDong(this)">동작구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|마포구" onclick="toggleDong(this)">마포구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|서대문구" onclick="toggleDong(this)">서대문구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|서초구" onclick="toggleDong(this)">서초구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|성동구" onclick="toggleDong(this)">성동구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|성북구" onclick="toggleDong(this)">성북구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|송파구" onclick="toggleDong(this)">송파구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|양천구" onclick="toggleDong(this)">양천구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|영등포구" onclick="toggleDong(this)">영등포구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|용산구" onclick="toggleDong(this)">용산구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|은평구" onclick="toggleDong(this)">은평구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|종로구" onclick="toggleDong(this)">종로구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|중구" onclick="toggleDong(this)">중구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|중랑구" onclick="toggleDong(this)">중랑구</button>
+        <button type="button" class="region-chip" data-key="서울특별시|기타" onclick="toggleDong(this)">기타</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">부산</div>
       <div class="region-chips">
-        <span class="region-chip">강서구</span>
-        <span class="region-chip">금정구</span>
-        <span class="region-chip">기장군</span>
-        <span class="region-chip">남구</span>
-        <span class="region-chip">동구</span>
-        <span class="region-chip">동래구</span>
-        <span class="region-chip">부산진구</span>
-        <span class="region-chip">북구</span>
-        <span class="region-chip">사상구</span>
-        <span class="region-chip">사하구</span>
-        <span class="region-chip">서구</span>
-        <span class="region-chip">수영구</span>
-        <span class="region-chip">연제구</span>
-        <span class="region-chip">영도구</span>
-        <span class="region-chip">중구</span>
-        <span class="region-chip">해운대구</span>
-        <span class="region-chip">기타</span>
+        <button type="button" class="region-chip" data-key="부산광역시|강서구" onclick="toggleDong(this)">강서구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|금정구" onclick="toggleDong(this)">금정구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|기장군" onclick="toggleDong(this)">기장군</button>
+        <button type="button" class="region-chip" data-key="부산광역시|남구" onclick="toggleDong(this)">남구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|동구" onclick="toggleDong(this)">동구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|동래구" onclick="toggleDong(this)">동래구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|부산진구" onclick="toggleDong(this)">부산진구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|북구" onclick="toggleDong(this)">북구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|사상구" onclick="toggleDong(this)">사상구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|사하구" onclick="toggleDong(this)">사하구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|서구" onclick="toggleDong(this)">서구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|수영구" onclick="toggleDong(this)">수영구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|연제구" onclick="toggleDong(this)">연제구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|영도구" onclick="toggleDong(this)">영도구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|중구" onclick="toggleDong(this)">중구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|해운대구" onclick="toggleDong(this)">해운대구</button>
+        <button type="button" class="region-chip" data-key="부산광역시|기타" onclick="toggleDong(this)">기타</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">대구</div>
       <div class="region-chips">
-        <span class="region-chip">군위군</span>
-        <span class="region-chip">남구</span>
-        <span class="region-chip">달서구</span>
-        <span class="region-chip">달성군</span>
-        <span class="region-chip">동구</span>
-        <span class="region-chip">북구</span>
-        <span class="region-chip">서구</span>
-        <span class="region-chip">수성구</span>
-        <span class="region-chip">중구</span>
+        <button type="button" class="region-chip" data-key="대구광역시|군위군" onclick="toggleDong(this)">군위군</button>
+        <button type="button" class="region-chip" data-key="대구광역시|남구" onclick="toggleDong(this)">남구</button>
+        <button type="button" class="region-chip" data-key="대구광역시|달서구" onclick="toggleDong(this)">달서구</button>
+        <button type="button" class="region-chip" data-key="대구광역시|달성군" onclick="toggleDong(this)">달성군</button>
+        <button type="button" class="region-chip" data-key="대구광역시|동구" onclick="toggleDong(this)">동구</button>
+        <button type="button" class="region-chip" data-key="대구광역시|북구" onclick="toggleDong(this)">북구</button>
+        <button type="button" class="region-chip" data-key="대구광역시|서구" onclick="toggleDong(this)">서구</button>
+        <button type="button" class="region-chip" data-key="대구광역시|수성구" onclick="toggleDong(this)">수성구</button>
+        <button type="button" class="region-chip" data-key="대구광역시|중구" onclick="toggleDong(this)">중구</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">인천</div>
       <div class="region-chips">
-        <span class="region-chip">강화군</span>
-        <span class="region-chip">검단구</span>
-        <span class="region-chip">계양구</span>
-        <span class="region-chip">남동구</span>
-        <span class="region-chip">미추홀구</span>
-        <span class="region-chip">부평구</span>
-        <span class="region-chip">서해구</span>
-        <span class="region-chip">연수구</span>
-        <span class="region-chip">영종구</span>
-        <span class="region-chip">옹진군</span>
-        <span class="region-chip">제물포구</span>
-        <span class="region-chip">중구</span>
-        <span class="region-chip">기타</span>
+        <button type="button" class="region-chip" data-key="인천광역시|강화군" onclick="toggleDong(this)">강화군</button>
+        <button type="button" class="region-chip" data-key="인천광역시|검단구" onclick="toggleDong(this)">검단구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|계양구" onclick="toggleDong(this)">계양구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|남동구" onclick="toggleDong(this)">남동구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|미추홀구" onclick="toggleDong(this)">미추홀구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|부평구" onclick="toggleDong(this)">부평구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|서해구" onclick="toggleDong(this)">서해구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|연수구" onclick="toggleDong(this)">연수구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|영종구" onclick="toggleDong(this)">영종구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|옹진군" onclick="toggleDong(this)">옹진군</button>
+        <button type="button" class="region-chip" data-key="인천광역시|제물포구" onclick="toggleDong(this)">제물포구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|중구" onclick="toggleDong(this)">중구</button>
+        <button type="button" class="region-chip" data-key="인천광역시|기타" onclick="toggleDong(this)">기타</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">전남광주</div>
       <div class="region-chips">
-        <span class="region-chip">강진군</span>
-        <span class="region-chip">고흥군</span>
-        <span class="region-chip">곡성군</span>
-        <span class="region-chip">광산구</span>
-        <span class="region-chip">광양시</span>
-        <span class="region-chip">구례군</span>
-        <span class="region-chip">나주시</span>
-        <span class="region-chip">남구</span>
-        <span class="region-chip">담양군</span>
-        <span class="region-chip">동구</span>
-        <span class="region-chip">목포시</span>
-        <span class="region-chip">무안군</span>
-        <span class="region-chip">보성군</span>
-        <span class="region-chip">북구</span>
-        <span class="region-chip">서구</span>
-        <span class="region-chip">순천시</span>
-        <span class="region-chip">신안군</span>
-        <span class="region-chip">여수시</span>
-        <span class="region-chip">영광군</span>
-        <span class="region-chip">영암군</span>
-        <span class="region-chip">완도군</span>
-        <span class="region-chip">장성군</span>
-        <span class="region-chip">장흥군</span>
-        <span class="region-chip">진도군</span>
-        <span class="region-chip">함평군</span>
-        <span class="region-chip">해남군</span>
-        <span class="region-chip">화순군</span>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|강진군" onclick="toggleDong(this)">강진군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|고흥군" onclick="toggleDong(this)">고흥군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|곡성군" onclick="toggleDong(this)">곡성군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(광주)|광산구" onclick="toggleDong(this)">광산구</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|광양시" onclick="toggleDong(this)">광양시</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|구례군" onclick="toggleDong(this)">구례군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|나주시" onclick="toggleDong(this)">나주시</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(광주)|남구" onclick="toggleDong(this)">남구</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|담양군" onclick="toggleDong(this)">담양군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(광주)|동구" onclick="toggleDong(this)">동구</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|목포시" onclick="toggleDong(this)">목포시</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|무안군" onclick="toggleDong(this)">무안군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|보성군" onclick="toggleDong(this)">보성군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(광주)|북구" onclick="toggleDong(this)">북구</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(광주)|서구" onclick="toggleDong(this)">서구</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|순천시" onclick="toggleDong(this)">순천시</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|신안군" onclick="toggleDong(this)">신안군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|여수시" onclick="toggleDong(this)">여수시</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|영광군" onclick="toggleDong(this)">영광군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|영암군" onclick="toggleDong(this)">영암군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|완도군" onclick="toggleDong(this)">완도군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|장성군" onclick="toggleDong(this)">장성군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|장흥군" onclick="toggleDong(this)">장흥군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|진도군" onclick="toggleDong(this)">진도군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|함평군" onclick="toggleDong(this)">함평군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|해남군" onclick="toggleDong(this)">해남군</button>
+        <button type="button" class="region-chip" data-key="전남광주통합특별시(전남)|화순군" onclick="toggleDong(this)">화순군</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">대전</div>
       <div class="region-chips">
-        <span class="region-chip">대덕구</span>
-        <span class="region-chip">동구</span>
-        <span class="region-chip">서구</span>
-        <span class="region-chip">유성구</span>
-        <span class="region-chip">중구</span>
+        <button type="button" class="region-chip" data-key="대전광역시|대덕구" onclick="toggleDong(this)">대덕구</button>
+        <button type="button" class="region-chip" data-key="대전광역시|동구" onclick="toggleDong(this)">동구</button>
+        <button type="button" class="region-chip" data-key="대전광역시|서구" onclick="toggleDong(this)">서구</button>
+        <button type="button" class="region-chip" data-key="대전광역시|유성구" onclick="toggleDong(this)">유성구</button>
+        <button type="button" class="region-chip" data-key="대전광역시|중구" onclick="toggleDong(this)">중구</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">울산</div>
       <div class="region-chips">
-        <span class="region-chip">남구</span>
-        <span class="region-chip">동구</span>
-        <span class="region-chip">북구</span>
-        <span class="region-chip">울주군</span>
-        <span class="region-chip">중구</span>
+        <button type="button" class="region-chip" data-key="울산광역시|남구" onclick="toggleDong(this)">남구</button>
+        <button type="button" class="region-chip" data-key="울산광역시|동구" onclick="toggleDong(this)">동구</button>
+        <button type="button" class="region-chip" data-key="울산광역시|북구" onclick="toggleDong(this)">북구</button>
+        <button type="button" class="region-chip" data-key="울산광역시|울주군" onclick="toggleDong(this)">울주군</button>
+        <button type="button" class="region-chip" data-key="울산광역시|중구" onclick="toggleDong(this)">중구</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">세종</div>
       <div class="region-chips">
-        <span class="region-chip">세종시</span>
+        <button type="button" class="region-chip" data-key="세종특별자치시|세종시" onclick="toggleDong(this)">세종시</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">경기</div>
       <div class="region-chips">
-        <span class="region-chip">가평군</span>
-        <span class="region-chip">고양시</span>
-        <span class="region-chip">과천시</span>
-        <span class="region-chip">광명시</span>
-        <span class="region-chip">광주시</span>
-        <span class="region-chip">구리시</span>
-        <span class="region-chip">군포시</span>
-        <span class="region-chip">김포시</span>
-        <span class="region-chip">남양주시</span>
-        <span class="region-chip">동두천시</span>
-        <span class="region-chip">부천시</span>
-        <span class="region-chip">성남시</span>
-        <span class="region-chip">수원시</span>
-        <span class="region-chip">시흥시</span>
-        <span class="region-chip">안산시</span>
-        <span class="region-chip">안성시</span>
-        <span class="region-chip">안양시</span>
-        <span class="region-chip">양주시</span>
-        <span class="region-chip">양평군</span>
-        <span class="region-chip">여주시</span>
-        <span class="region-chip">연천군</span>
-        <span class="region-chip">오산시</span>
-        <span class="region-chip">용인시</span>
-        <span class="region-chip">의왕시</span>
-        <span class="region-chip">의정부시</span>
-        <span class="region-chip">이천시</span>
-        <span class="region-chip">파주시</span>
-        <span class="region-chip">평택시</span>
-        <span class="region-chip">포천시</span>
-        <span class="region-chip">하남시</span>
-        <span class="region-chip">화성시</span>
-        <span class="region-chip">기타</span>
+        <button type="button" class="region-chip" data-key="경기도|가평군" onclick="toggleDong(this)">가평군</button>
+        <button type="button" class="region-chip" data-key="경기도|고양시" onclick="toggleDong(this)">고양시</button>
+        <button type="button" class="region-chip" data-key="경기도|과천시" onclick="toggleDong(this)">과천시</button>
+        <button type="button" class="region-chip" data-key="경기도|광명시" onclick="toggleDong(this)">광명시</button>
+        <button type="button" class="region-chip" data-key="경기도|광주시" onclick="toggleDong(this)">광주시</button>
+        <button type="button" class="region-chip" data-key="경기도|구리시" onclick="toggleDong(this)">구리시</button>
+        <button type="button" class="region-chip" data-key="경기도|군포시" onclick="toggleDong(this)">군포시</button>
+        <button type="button" class="region-chip" data-key="경기도|김포시" onclick="toggleDong(this)">김포시</button>
+        <button type="button" class="region-chip" data-key="경기도|남양주시" onclick="toggleDong(this)">남양주시</button>
+        <button type="button" class="region-chip" data-key="경기도|동두천시" onclick="toggleDong(this)">동두천시</button>
+        <button type="button" class="region-chip" data-key="경기도|부천시" onclick="toggleDong(this)">부천시</button>
+        <button type="button" class="region-chip" data-key="경기도|성남시" onclick="toggleDong(this)">성남시</button>
+        <button type="button" class="region-chip" data-key="경기도|수원시" onclick="toggleDong(this)">수원시</button>
+        <button type="button" class="region-chip" data-key="경기도|시흥시" onclick="toggleDong(this)">시흥시</button>
+        <button type="button" class="region-chip" data-key="경기도|안산시" onclick="toggleDong(this)">안산시</button>
+        <button type="button" class="region-chip" data-key="경기도|안성시" onclick="toggleDong(this)">안성시</button>
+        <button type="button" class="region-chip" data-key="경기도|안양시" onclick="toggleDong(this)">안양시</button>
+        <button type="button" class="region-chip" data-key="경기도|양주시" onclick="toggleDong(this)">양주시</button>
+        <button type="button" class="region-chip" data-key="경기도|양평군" onclick="toggleDong(this)">양평군</button>
+        <button type="button" class="region-chip" data-key="경기도|여주시" onclick="toggleDong(this)">여주시</button>
+        <button type="button" class="region-chip" data-key="경기도|연천군" onclick="toggleDong(this)">연천군</button>
+        <button type="button" class="region-chip" data-key="경기도|오산시" onclick="toggleDong(this)">오산시</button>
+        <button type="button" class="region-chip" data-key="경기도|용인시" onclick="toggleDong(this)">용인시</button>
+        <button type="button" class="region-chip" data-key="경기도|의왕시" onclick="toggleDong(this)">의왕시</button>
+        <button type="button" class="region-chip" data-key="경기도|의정부시" onclick="toggleDong(this)">의정부시</button>
+        <button type="button" class="region-chip" data-key="경기도|이천시" onclick="toggleDong(this)">이천시</button>
+        <button type="button" class="region-chip" data-key="경기도|파주시" onclick="toggleDong(this)">파주시</button>
+        <button type="button" class="region-chip" data-key="경기도|평택시" onclick="toggleDong(this)">평택시</button>
+        <button type="button" class="region-chip" data-key="경기도|포천시" onclick="toggleDong(this)">포천시</button>
+        <button type="button" class="region-chip" data-key="경기도|하남시" onclick="toggleDong(this)">하남시</button>
+        <button type="button" class="region-chip" data-key="경기도|화성시" onclick="toggleDong(this)">화성시</button>
+        <button type="button" class="region-chip" data-key="경기도|기타" onclick="toggleDong(this)">기타</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">강원</div>
       <div class="region-chips">
-        <span class="region-chip">강릉시</span>
-        <span class="region-chip">고성군</span>
-        <span class="region-chip">동해시</span>
-        <span class="region-chip">삼척시</span>
-        <span class="region-chip">속초시</span>
-        <span class="region-chip">양구군</span>
-        <span class="region-chip">양양군</span>
-        <span class="region-chip">영월군</span>
-        <span class="region-chip">원주시</span>
-        <span class="region-chip">인제군</span>
-        <span class="region-chip">정선군</span>
-        <span class="region-chip">철원군</span>
-        <span class="region-chip">춘천시</span>
-        <span class="region-chip">태백시</span>
-        <span class="region-chip">평창군</span>
-        <span class="region-chip">홍천군</span>
-        <span class="region-chip">화천군</span>
-        <span class="region-chip">횡성군</span>
-        <span class="region-chip">기타</span>
+        <button type="button" class="region-chip" data-key="강원특별자치도|강릉시" onclick="toggleDong(this)">강릉시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|고성군" onclick="toggleDong(this)">고성군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|동해시" onclick="toggleDong(this)">동해시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|삼척시" onclick="toggleDong(this)">삼척시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|속초시" onclick="toggleDong(this)">속초시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|양구군" onclick="toggleDong(this)">양구군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|양양군" onclick="toggleDong(this)">양양군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|영월군" onclick="toggleDong(this)">영월군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|원주시" onclick="toggleDong(this)">원주시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|인제군" onclick="toggleDong(this)">인제군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|정선군" onclick="toggleDong(this)">정선군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|철원군" onclick="toggleDong(this)">철원군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|춘천시" onclick="toggleDong(this)">춘천시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|태백시" onclick="toggleDong(this)">태백시</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|평창군" onclick="toggleDong(this)">평창군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|홍천군" onclick="toggleDong(this)">홍천군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|화천군" onclick="toggleDong(this)">화천군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|횡성군" onclick="toggleDong(this)">횡성군</button>
+        <button type="button" class="region-chip" data-key="강원특별자치도|기타" onclick="toggleDong(this)">기타</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">충북</div>
       <div class="region-chips">
-        <span class="region-chip">괴산군</span>
-        <span class="region-chip">단양군</span>
-        <span class="region-chip">보은군</span>
-        <span class="region-chip">영동군</span>
-        <span class="region-chip">옥천군</span>
-        <span class="region-chip">음성군</span>
-        <span class="region-chip">제천시</span>
-        <span class="region-chip">증평군</span>
-        <span class="region-chip">진천군</span>
-        <span class="region-chip">청주시</span>
-        <span class="region-chip">충주시</span>
+        <button type="button" class="region-chip" data-key="충청북도|괴산군" onclick="toggleDong(this)">괴산군</button>
+        <button type="button" class="region-chip" data-key="충청북도|단양군" onclick="toggleDong(this)">단양군</button>
+        <button type="button" class="region-chip" data-key="충청북도|보은군" onclick="toggleDong(this)">보은군</button>
+        <button type="button" class="region-chip" data-key="충청북도|영동군" onclick="toggleDong(this)">영동군</button>
+        <button type="button" class="region-chip" data-key="충청북도|옥천군" onclick="toggleDong(this)">옥천군</button>
+        <button type="button" class="region-chip" data-key="충청북도|음성군" onclick="toggleDong(this)">음성군</button>
+        <button type="button" class="region-chip" data-key="충청북도|제천시" onclick="toggleDong(this)">제천시</button>
+        <button type="button" class="region-chip" data-key="충청북도|증평군" onclick="toggleDong(this)">증평군</button>
+        <button type="button" class="region-chip" data-key="충청북도|진천군" onclick="toggleDong(this)">진천군</button>
+        <button type="button" class="region-chip" data-key="충청북도|청주시" onclick="toggleDong(this)">청주시</button>
+        <button type="button" class="region-chip" data-key="충청북도|충주시" onclick="toggleDong(this)">충주시</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">충남</div>
       <div class="region-chips">
-        <span class="region-chip">계룡시</span>
-        <span class="region-chip">공주시</span>
-        <span class="region-chip">금산군</span>
-        <span class="region-chip">논산시</span>
-        <span class="region-chip">당진시</span>
-        <span class="region-chip">보령시</span>
-        <span class="region-chip">부여군</span>
-        <span class="region-chip">서산시</span>
-        <span class="region-chip">서천군</span>
-        <span class="region-chip">아산시</span>
-        <span class="region-chip">예산군</span>
-        <span class="region-chip">천안시</span>
-        <span class="region-chip">청양군</span>
-        <span class="region-chip">태안군</span>
-        <span class="region-chip">홍성군</span>
-        <span class="region-chip">기타</span>
+        <button type="button" class="region-chip" data-key="충청남도|계룡시" onclick="toggleDong(this)">계룡시</button>
+        <button type="button" class="region-chip" data-key="충청남도|공주시" onclick="toggleDong(this)">공주시</button>
+        <button type="button" class="region-chip" data-key="충청남도|금산군" onclick="toggleDong(this)">금산군</button>
+        <button type="button" class="region-chip" data-key="충청남도|논산시" onclick="toggleDong(this)">논산시</button>
+        <button type="button" class="region-chip" data-key="충청남도|당진시" onclick="toggleDong(this)">당진시</button>
+        <button type="button" class="region-chip" data-key="충청남도|보령시" onclick="toggleDong(this)">보령시</button>
+        <button type="button" class="region-chip" data-key="충청남도|부여군" onclick="toggleDong(this)">부여군</button>
+        <button type="button" class="region-chip" data-key="충청남도|서산시" onclick="toggleDong(this)">서산시</button>
+        <button type="button" class="region-chip" data-key="충청남도|서천군" onclick="toggleDong(this)">서천군</button>
+        <button type="button" class="region-chip" data-key="충청남도|아산시" onclick="toggleDong(this)">아산시</button>
+        <button type="button" class="region-chip" data-key="충청남도|예산군" onclick="toggleDong(this)">예산군</button>
+        <button type="button" class="region-chip" data-key="충청남도|천안시" onclick="toggleDong(this)">천안시</button>
+        <button type="button" class="region-chip" data-key="충청남도|청양군" onclick="toggleDong(this)">청양군</button>
+        <button type="button" class="region-chip" data-key="충청남도|태안군" onclick="toggleDong(this)">태안군</button>
+        <button type="button" class="region-chip" data-key="충청남도|홍성군" onclick="toggleDong(this)">홍성군</button>
+        <button type="button" class="region-chip" data-key="충청남도|기타" onclick="toggleDong(this)">기타</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">전북</div>
       <div class="region-chips">
-        <span class="region-chip">고창군</span>
-        <span class="region-chip">군산시</span>
-        <span class="region-chip">김제시</span>
-        <span class="region-chip">남원시</span>
-        <span class="region-chip">무주군</span>
-        <span class="region-chip">부안군</span>
-        <span class="region-chip">순창군</span>
-        <span class="region-chip">완주군</span>
-        <span class="region-chip">익산시</span>
-        <span class="region-chip">임실군</span>
-        <span class="region-chip">장수군</span>
-        <span class="region-chip">전주시</span>
-        <span class="region-chip">정읍시</span>
-        <span class="region-chip">진안군</span>
+        <button type="button" class="region-chip" data-key="전북특별자치도|고창군" onclick="toggleDong(this)">고창군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|군산시" onclick="toggleDong(this)">군산시</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|김제시" onclick="toggleDong(this)">김제시</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|남원시" onclick="toggleDong(this)">남원시</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|무주군" onclick="toggleDong(this)">무주군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|부안군" onclick="toggleDong(this)">부안군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|순창군" onclick="toggleDong(this)">순창군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|완주군" onclick="toggleDong(this)">완주군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|익산시" onclick="toggleDong(this)">익산시</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|임실군" onclick="toggleDong(this)">임실군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|장수군" onclick="toggleDong(this)">장수군</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|전주시" onclick="toggleDong(this)">전주시</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|정읍시" onclick="toggleDong(this)">정읍시</button>
+        <button type="button" class="region-chip" data-key="전북특별자치도|진안군" onclick="toggleDong(this)">진안군</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">경북</div>
       <div class="region-chips">
-        <span class="region-chip">경산시</span>
-        <span class="region-chip">경주시</span>
-        <span class="region-chip">고령군</span>
-        <span class="region-chip">구미시</span>
-        <span class="region-chip">김천시</span>
-        <span class="region-chip">문경시</span>
-        <span class="region-chip">봉화군</span>
-        <span class="region-chip">상주시</span>
-        <span class="region-chip">성주군</span>
-        <span class="region-chip">안동시</span>
-        <span class="region-chip">영덕군</span>
-        <span class="region-chip">영양군</span>
-        <span class="region-chip">영주시</span>
-        <span class="region-chip">영천시</span>
-        <span class="region-chip">예천군</span>
-        <span class="region-chip">울릉군</span>
-        <span class="region-chip">울진군</span>
-        <span class="region-chip">의성군</span>
-        <span class="region-chip">청도군</span>
-        <span class="region-chip">청송군</span>
-        <span class="region-chip">칠곡군</span>
-        <span class="region-chip">포항시</span>
+        <button type="button" class="region-chip" data-key="경상북도|경산시" onclick="toggleDong(this)">경산시</button>
+        <button type="button" class="region-chip" data-key="경상북도|경주시" onclick="toggleDong(this)">경주시</button>
+        <button type="button" class="region-chip" data-key="경상북도|고령군" onclick="toggleDong(this)">고령군</button>
+        <button type="button" class="region-chip" data-key="경상북도|구미시" onclick="toggleDong(this)">구미시</button>
+        <button type="button" class="region-chip" data-key="경상북도|김천시" onclick="toggleDong(this)">김천시</button>
+        <button type="button" class="region-chip" data-key="경상북도|문경시" onclick="toggleDong(this)">문경시</button>
+        <button type="button" class="region-chip" data-key="경상북도|봉화군" onclick="toggleDong(this)">봉화군</button>
+        <button type="button" class="region-chip" data-key="경상북도|상주시" onclick="toggleDong(this)">상주시</button>
+        <button type="button" class="region-chip" data-key="경상북도|성주군" onclick="toggleDong(this)">성주군</button>
+        <button type="button" class="region-chip" data-key="경상북도|안동시" onclick="toggleDong(this)">안동시</button>
+        <button type="button" class="region-chip" data-key="경상북도|영덕군" onclick="toggleDong(this)">영덕군</button>
+        <button type="button" class="region-chip" data-key="경상북도|영양군" onclick="toggleDong(this)">영양군</button>
+        <button type="button" class="region-chip" data-key="경상북도|영주시" onclick="toggleDong(this)">영주시</button>
+        <button type="button" class="region-chip" data-key="경상북도|영천시" onclick="toggleDong(this)">영천시</button>
+        <button type="button" class="region-chip" data-key="경상북도|예천군" onclick="toggleDong(this)">예천군</button>
+        <button type="button" class="region-chip" data-key="경상북도|울릉군" onclick="toggleDong(this)">울릉군</button>
+        <button type="button" class="region-chip" data-key="경상북도|울진군" onclick="toggleDong(this)">울진군</button>
+        <button type="button" class="region-chip" data-key="경상북도|의성군" onclick="toggleDong(this)">의성군</button>
+        <button type="button" class="region-chip" data-key="경상북도|청도군" onclick="toggleDong(this)">청도군</button>
+        <button type="button" class="region-chip" data-key="경상북도|청송군" onclick="toggleDong(this)">청송군</button>
+        <button type="button" class="region-chip" data-key="경상북도|칠곡군" onclick="toggleDong(this)">칠곡군</button>
+        <button type="button" class="region-chip" data-key="경상북도|포항시" onclick="toggleDong(this)">포항시</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">경남</div>
       <div class="region-chips">
-        <span class="region-chip">거제시</span>
-        <span class="region-chip">거창군</span>
-        <span class="region-chip">고성군</span>
-        <span class="region-chip">김해시</span>
-        <span class="region-chip">남해군</span>
-        <span class="region-chip">밀양시</span>
-        <span class="region-chip">사천시</span>
-        <span class="region-chip">산청군</span>
-        <span class="region-chip">양산시</span>
-        <span class="region-chip">의령군</span>
-        <span class="region-chip">진주시</span>
-        <span class="region-chip">창녕군</span>
-        <span class="region-chip">창원시</span>
-        <span class="region-chip">통영시</span>
-        <span class="region-chip">하동군</span>
-        <span class="region-chip">함안군</span>
-        <span class="region-chip">함양군</span>
-        <span class="region-chip">합천군</span>
+        <button type="button" class="region-chip" data-key="경상남도|거제시" onclick="toggleDong(this)">거제시</button>
+        <button type="button" class="region-chip" data-key="경상남도|거창군" onclick="toggleDong(this)">거창군</button>
+        <button type="button" class="region-chip" data-key="경상남도|고성군" onclick="toggleDong(this)">고성군</button>
+        <button type="button" class="region-chip" data-key="경상남도|김해시" onclick="toggleDong(this)">김해시</button>
+        <button type="button" class="region-chip" data-key="경상남도|남해군" onclick="toggleDong(this)">남해군</button>
+        <button type="button" class="region-chip" data-key="경상남도|밀양시" onclick="toggleDong(this)">밀양시</button>
+        <button type="button" class="region-chip" data-key="경상남도|사천시" onclick="toggleDong(this)">사천시</button>
+        <button type="button" class="region-chip" data-key="경상남도|산청군" onclick="toggleDong(this)">산청군</button>
+        <button type="button" class="region-chip" data-key="경상남도|양산시" onclick="toggleDong(this)">양산시</button>
+        <button type="button" class="region-chip" data-key="경상남도|의령군" onclick="toggleDong(this)">의령군</button>
+        <button type="button" class="region-chip" data-key="경상남도|진주시" onclick="toggleDong(this)">진주시</button>
+        <button type="button" class="region-chip" data-key="경상남도|창녕군" onclick="toggleDong(this)">창녕군</button>
+        <button type="button" class="region-chip" data-key="경상남도|창원시" onclick="toggleDong(this)">창원시</button>
+        <button type="button" class="region-chip" data-key="경상남도|통영시" onclick="toggleDong(this)">통영시</button>
+        <button type="button" class="region-chip" data-key="경상남도|하동군" onclick="toggleDong(this)">하동군</button>
+        <button type="button" class="region-chip" data-key="경상남도|함안군" onclick="toggleDong(this)">함안군</button>
+        <button type="button" class="region-chip" data-key="경상남도|함양군" onclick="toggleDong(this)">함양군</button>
+        <button type="button" class="region-chip" data-key="경상남도|합천군" onclick="toggleDong(this)">합천군</button>
       </div>
     </div>
     <div class="region-group">
       <div class="region-group-title">제주</div>
       <div class="region-chips">
-        <span class="region-chip">서귀포시</span>
-        <span class="region-chip">제주시</span>
+        <button type="button" class="region-chip" data-key="제주특별자치도|서귀포시" onclick="toggleDong(this)">서귀포시</button>
+        <button type="button" class="region-chip" data-key="제주특별자치도|제주시" onclick="toggleDong(this)">제주시</button>
       </div>
     </div>
   </div>
@@ -1237,6 +1249,262 @@ function setTab(el) {
     var desc = card.getAttribute('data-desc-' + gradeKey);
     if (desc) card.querySelector('.subject-desc').innerHTML = desc;
   });
+}
+</script>
+<script>
+window.DONG_DATA = {
+"강원특별자치도|강릉시":["강동면","초당동","교동","지변동","옥천동","송정동","주문진읍","입암동","홍제동","용강동","구정면","포남동","안현동","노암동","내곡동","회산동","장현동","사천면","성산면","연곡면","옥계면","왕산면","운산동","유천동"],
+"강원특별자치도|고성군":["간성읍","거진읍","죽왕면","현내면","토성면"],
+"강원특별자치도|기타":[],
+"강원특별자치도|동해시":["평릉동","동회동","천곡동","발한동","부곡동","망상동","지흥동","용정동","북평동","이로동","송정동","단봉동","묵호진동","쇄운동"],
+"강원특별자치도|삼척시":["가곡면","근덕면","도계읍","미로면","남양동","당저동","오분동","갈천동","자원동","교동","원당동","신기면","원덕읍","정상동","하장면"],
+"강원특별자치도|속초시":["교동","대포동","조양동","설악동","노학동","장사동","금호동","영랑동","중앙동"],
+"강원특별자치도|양구군":["양구읍","동면","국토정중앙면","방산면","해안면"],
+"강원특별자치도|양양군":["강현면","현북면","현남면","서면","손양면","양양읍"],
+"강원특별자치도|영월군":["상동읍","영월읍","산솔면","북면","무릉도원면","한반도면","남면","김삿갓면","주천면"],
+"강원특별자치도|원주시":["태장동","지정면","호저면","관설동","명륜동","소초면","단구동","귀래면","판부면","단계동","무실동","문막읍","흥업면","개운동","행구동","반곡동","부론면","신림면","우산동","일산동","학성동"],
+"강원특별자치도|인제군":["인제읍","기린면","남면","상남면","서화면","북면"],
+"강원특별자치도|정선군":["고한읍","북평면","남면","화암면","정선읍","사북읍","여량면","신동읍","임계면"],
+"강원특별자치도|철원군":["근남면","서면","김화읍","갈말읍","동송읍","철원읍"],
+"강원특별자치도|춘천시":["동면","남면","서면","후평동","우두동","사농동","송암동","남산면","교동","근화동","신동면","퇴계동","온의동","동내면","동산면","효자동","석사동","약사동","신북읍","낙원동","사북면","칠전동","북산면"],
+"강원특별자치도|태백시":["동점동","원동","장성동","황지동","문곡동","철암동","금천동","통동","소도동"],
+"강원특별자치도|평창군":["진부면","방림면","대관령면","대화면","봉평면","미탄면","용평면","평창읍"],
+"강원특별자치도|홍천군":["남면","화촌면","홍천읍","내면","내촌면","영귀미면","서면","두촌면","서석면","북방면"],
+"강원특별자치도|화천군":["간동면","사내면","상서면","하남면","화천읍"],
+"강원특별자치도|횡성군":["갑천면","강림면","공근면","횡성읍","둔내면","안흥면","서원면","우천면","청일면"],
+"경기도|가평군":["가평읍","북면","설악면","청평면","상면","조종면"],
+"경기도|고양시":["행신동","가좌동","주엽동","중산동","삼송동","관산동","식사동","동산동","백석동","성석동","일산동","덕이동","오금동","고양동","장항동","대화동","화정동","마두동","내유동","토당동","풍동","대장동","화전동","덕은동","도내동","법곳동","사리현동","원흥동","탄현동","성사동","문봉동","신원동","용두동","주교동","정발산동","저동","지축동","행주내동","향동동","향동"],
+"경기도|과천시":["별양동","중앙동","갈현동","부림동"],
+"경기도|광명시":["하안동","광명동","철산동","소하동","일직동","가학동","노온사동"],
+"경기도|광주시":["장지동","경안동","송정동","곤지암읍","중대동","퇴촌면","도척면","태전동","신현동","초월읍","양벌동","역동","쌍령동","남한산성면","능평동","오포읍","탄벌동","남종면","고산동"],
+"경기도|구리시":["갈매동","인창동","교문동","수택동","토평동","사노동"],
+"경기도|군포시":["산본동","금정동","대야미동","부곡동","당동","당정동","둔대동","도마교동"],
+"경기도|김포시":["장기동","감정동","월곶면","걸포동","고촌읍","하성면","북변동","사우동","구래동","대곶면","풍무동","운양동","통진읍","마산동","양촌읍"],
+"경기도|남양주시":["화도읍","수동면","가운동","별내면","진접읍","호평동","금곡동","다산동","별내동","와부읍","평내동","조안면","지금동","오남읍","도농동","퇴계원읍","진건읍","퇴계원면"],
+"경기도|동두천시":["생연동","송내동","지행동","동두천동","안흥동","탑동동"],
+"경기도|부천시":["심곡본동","중동","고강동","여월동","작동","내동","오정동","도당동","역곡동","범박동","계수동","소사본동","상동","원미동","송내동","괴안동","삼정동","춘의동","원종동","약대동","소사동","심곡동","옥길동"],
+"경기도|성남시":["하대원동","정자동","구미동","금광동","태평동","판교동","수내동","분당동","상대원동","도촌동","이매동","야탑동","성남동","백현동","삼평동","복정동","금곡동","서현동","운중동","단대동","은행동","산성동","수진동","신흥동","양지동","여수동","중앙동","고등동","창곡동","동원동","대장동","심곡동"],
+"경기도|수원시":["송죽동","당수동","화서동","천천동","이목동","고색동","곡반정동","권선동","이의동","원천동","구운동","세류동","망포동","남창동","호매실동","정자동","우만동","매탄동","동원동","매교동","인계동","매향동","율전동","금곡동","서둔동","조원동","영화동","수원동","고등동","파장동","영통동","오목천동","하동","입북동","탑동","지동","연무동"],
+"경기도|시흥시":["은행동","정왕동","경기자동","계수동","거모동","논곡동","대야동","도창동","조남동","배곧동","산현동","죽율동","신천동","능곡동","장현동","하상동","매화동","월곶동","광석동","장곡동","포동","하중동","과림동","군자동"],
+"경기도|안산시":["본오동","팔곡일동","성포동","고잔동","선부동","원곡동","초지동","월피동","신길동","대부남동","대동","대부북동","와동","이동","사동","건건동","부곡동","장상동","일동","수암동","안산와동","팔곡이동"],
+"경기도|안성시":["발화동","금광면","미양면","공도읍","고삼면","대덕면","죽산면","아양동","보개면","삼죽면","낙원동","양성면","옥산동","당왕동","서운면","구포동","금산동","신소현동","봉남동","원곡면","일죽면"],
+"경기도|안양시":["비산동","관양동","평촌동","안양동","호계동","박달동","석수동"],
+"경기도|양주시":["광적면","덕정동","광사동","삼숭동","남면","덕계동","고암동","만송동","고읍동","은현면","산북동","장흥면","백석읍","옥정동","유양동","회정동"],
+"경기도|양평군":["강상면","강하면","개군면","지평면","양서면","용문면","단월면","서종면","양동면","양평읍","옥천면","청운면"],
+"경기도|여주시":["가남읍","강천면","대신면","세종대왕면","흥천면","북내면","산북면","상동","교동","월송동","오학동","금사면","점동면","점봉동"],
+"경기도|연천군":["군남면","청산면","신서면","백학면","연천읍","미산면","전곡읍"],
+"경기도|오산시":["가수동","세교동","금암동","내삼미동","부산동","궐동","탑동","수청동","외삼미동","오산동","지곶동","원동","양산동","청학동","고현동","갈곶동"],
+"경기도|용인시":["구갈동","고기동","고림동","공세동","마북동","신갈동","하갈동","보라동","남사읍","남사면","모현읍","죽전동","보정동","동백동","동천동","원삼면","포곡읍","상현동","모현면","풍덕천동","백암면","상갈동","삼가동","상하동","영덕동","서천동","역북동","농서동","중동","성복동","이동읍","신봉동","양지읍","언남동","김량장동","마평동","유방동","이동면","운학동","양지면","지곡동","청덕동","남동"],
+"경기도|의왕시":["내손동","고천동","오전동","내동","청계동","포일동","학의동","왕곡동","삼동","월암동"],
+"경기도|의정부시":["가능동","녹양동","의정부동","금오동","용현동","장암동","신곡동","민락동","낙양동","신동","호원동","고산동"],
+"경기도|이천시":["율면","장호원읍","사음동","부발읍","대월면","신둔면","백사면","마장면","모가면","창전동","설성면","안흥동","증포동","중리동","단월동","호법면","송정동","관고동","갈산동"],
+"경기도|파주시":["목동동","탄현면","검산동","광탄면","동패동","교하동","군내면","금촌동","금릉동","조리읍","다율동","문산읍","적성면","문발동","파주읍","야동동","법원읍","와동동","월롱면","야당동","파평면","아동동","파주와동"],
+"경기도|평택시":["죽백동","현덕면","가재동","진위면","안중읍","팽성읍","고덕동","군문동","포승읍","비전동","소사동","동삭동","서정동","이충동","청북읍","서탄면","세교동","지산동","신장동","오성면","용이동","장안동","장당동","지제동","합정동","칠원동","평택성동","평택동","고덕면"],
+"경기도|포천시":["가산면","소흘읍","관인면","내촌면","이동면","신북면","선단동","영북면","영중면","일동면","화현면","창수면","군내면","신읍동"],
+"경기도|하남시":["감이동","감일동","하사창동","덕풍동","신장동","광암동","망월동","선동","하산곡동","천현동","학암동","창우동","풍산동"],
+"경기도|화성시":["봉담읍","향남읍","송산면","병점동","기산동","반월동","기안동","반송동","남양읍","장안면","영천동","능동","신동","목동","청계동","오산동","우정읍","마도면","송동","배양동","진안동","비봉면","양감면","새솔동","서신면","장지동","산척동","매송면","안녕동","송산동","여울동","석우동","정남면","치동","팔탄면"],
+"경상남도|거제시":["아주동","고현동","상동동","옥포동","문동동","장승포동","양정동","거제면","연초면","장평동","하청면","사등면","능포동","동부면","둔덕면","남부면","수월동","장목면","일운면"],
+"경상남도|거창군":["가북면","가조면","거창읍","마리면","위천면","고제면","남상면","남하면","북상면","신원면","웅양면","주상면"],
+"경상남도|고성군":["개천면","거류면","하일면","고성읍","회화면","구만면","대가면","동해면","마암면","삼산면","상리면","영오면","하이면"],
+"경상남도|김해시":["내동","대청동","관동","관동동","구산동","상동면","진영읍","외동","삼정동","한림면","김해내동","어방동","대동면","동상동","장유동","전하동","부곡동","삼계동","삼문동","삼방동","주촌면","율하동","대성동","화목동","부원동","안동","서상동","지내동","내덕동","진례면","생림면","신문동","무계동"],
+"경상남도|남해군":["삼동면","고현면","남면","이동면","창선면","남해읍","미조면","상주면","설천면","서면"],
+"경상남도|밀양시":["단장면","하남읍","무안면","청도면","삼문동","내이동","산내면","초동면","내일동","상남면","가곡동","부북면","산외면","삼랑진읍","상동면"],
+"경상남도|사천시":["정동면","곤명면","곤양면","송포동","죽림동","동금동","서동","좌룡동","벌리동","사남면","사천읍","용강동","선구동","서포면","용현면","봉남동","축동면"],
+"경상남도|산청군":["신안면","생비량면","금서면","신등면","단성면","시천면","산청읍","삼장면","생초면","오부면","차황면"],
+"경상남도|양산시":["물금읍","삼호동","어곡동","동면","덕계동","백동","하북면","북정동","남부동","상북면","신기동","평산동","북부동","교동","중부동","명동","원동면"],
+"경상남도|의령군":["가례면","낙서면","의령읍","대의면","부림면","봉수면","용덕면","유곡면","정곡면","지정면","칠곡면","화정면"],
+"경상남도|진주시":["상평동","가좌동","충무공동","진성면","이반성면","장재동","경남자동","호탄동","상봉동","평거동","금산면","정촌면","금곡면","초전동","상대동","내동면","대곡면","이현동","하대동","망경동","명석면","문산읍","미천면","사봉면","일반성면","신안동","봉곡동","봉래동","수곡면","주약동","지수면","칠암동","평안동","인사동","집현면","판문동"],
+"경상남도|창녕군":["계성면","고암면","길곡면","남지읍","대합면","대지면","도천면","창녕읍","부곡면","성산면","영산면","유어면","이방면","장마면"],
+"경상남도|창원시":["양덕동","가포동","북면","내서읍","봉곡동","상남동","합성동","소계동","중앙동","경화동","회원동","교방동","현동","구산면","구암동","가음동","남양동","내동","두척동","대방동","대산면","여좌동","대원동","자은동","도계동","도천동","석동","풍호동","완월동","진동면","월영동","산호동","문화동","신월동","자산동","명서동","명곡동","반림동","동읍","봉암동","사림동","석전동","사파동","성주동","삼정자동","성호동","소답동","청안동","안민동","안골동","신촌동","용호동","용원동","웅동","마천동","성내동","남문동","장군동","대내동","반지동","중동","장천동","제황산동","진전면","태백동","팔용동","서상동","외동","두대동","가음정동","토월동","봉림동","진북면","해운동"],
+"경상남도|통영시":["광도면","도남동","도산면","도천동","사량면","산양읍","욕지면","용남면","북신동","인평동","미수동","명정동","문화동","정량동","무전동","봉평동","한산면"],
+"경상남도|하동군":["금성면","고전면","금남면","청암면","북천면","화개면","악양면","옥종면","적량면","진교면","하동읍","양보면","횡천면"],
+"경상남도|함안군":["가야읍","대산면","군북면","산인면","법수면","칠원읍","여항면","칠서면","함안면"],
+"경상남도|함양군":["휴천면","마천면","백전면","병곡면","서상면","서하면","수동면","안의면","함양읍","유림면","지곡면"],
+"경상남도|합천군":["가회면","합천읍","대병면","대양면","묘산면","봉산면","삼가면","쌍백면","쌍책면","야로면","율곡면","용주면","적중면","청덕면","초계면","덕곡면","가야면"],
+"경상북도|경산시":["자인면","남산면","신교동","계양동","갑제동","옥산동","압량읍","옥곡동","중방동","삼남동","와촌면","하양읍","평산동","남천면","진량읍","백천동","사동","중산동","용성면","임당동","사정동","정평동"],
+"경상북도|경주시":["감포읍","강동면","건천읍","안강읍","황오동","현곡면","성건동","시래동","서악동","충효동","문무대왕면","동천동","황성동","북부동","외동읍","용강동","양남면","내남면","동방동","천북면","구정동","산내면","천군동","인왕동","사정동","서면","노서동","구황동"],
+"경상북도|고령군":["개진면","대가야읍","우곡면","다산면","덕곡면","성산면","쌍림면","운수면"],
+"경상북도|구미시":["봉곡동","해평면","남통동","고아읍","광평동","도량동","사곡동","산동읍","신평동","형곡동","원평동","오태동","임은동","산동면","임수동","황상동","지산동","구평동","공단동","옥성면","도개면","무을면","상모동","선산읍","송정동","옥계동","장천면","거의동","인의동","진평동"],
+"경상북도|김천시":["감문면","감천면","개령면","아포읍","삼락동","부곡동","다수동","김천동","신음동","모암동","교동","황금동","성내동","율곡동","남산동","대덕면","대항면","지좌동","봉산면","평화동","어모면","조마면","지례면","증산면"],
+"경상북도|문경시":["가은읍","문경읍","영순면","농암면","동로면","마성면","모전동","점촌동","흥덕동","산북면","산양면","신기동","유곡동","호계면"],
+"경상북도|봉화군":["봉화읍","봉성면","명호면","물야면","법전면","상운면","춘양면","석포면","소천면","재산면"],
+"경상북도|상주시":["공성면","공검면","낙동면","내서면","낙양동","모동면","모서면","외서면","사벌국면","냉림동","남성동","신봉동","헌신동","복룡동","만산동","서문동","함창읍","성동동","계산동","외남면","은척면","이안면","중동면","청리면","화동면","화서면","화북면"],
+"경상북도|성주군":["가천면","대가면","용암면","선남면","벽진면","성주읍","수륜면","월항면","초전면"],
+"경상북도|안동시":["태화동","금곡동","송현동","신안동","길안면","안막동","용상동","남선면","남후면","녹전면","명륜동","당북동","옥동","북후면","풍산읍","서후면","안기동","송천동","풍천면","정하동","정상동","신세동","법상동","안동","남문동","와룡면","도산면","예안면","일직면","임동면","임하면"],
+"경상북도|영덕군":["강구면","남정면","병곡면","영덕읍","영해면","지품면","창수면","축산면"],
+"경상북도|영양군":["석보면","수비면","영양읍","일월면","청기면","입암면"],
+"경상북도|영주시":["풍기읍","휴천동","단산면","하망동","문수면","봉현면","부석면","순흥면","안정면","상망동","영주동","가흥동","이산면","장수면","평은면"],
+"경상북도|영천시":["금호읍","신녕면","북안면","고경면","대창면","화룡동","화남면","화북면","도동","야사동","조교동","성내동","교촌동","문내동","금노동","임고면","자양면","청통면","화산면"],
+"경상북도|예천군":["예천읍","감천면","호명읍","효자면","용궁면","용문면","유천면","은풍면","지보면","풍양면"],
+"경상북도|울릉군":["서면","울릉읍","북면"],
+"경상북도|울진군":["평해읍","기성면","근남면","매화면","북면","금강송면","온정면","울진읍","죽변면","후포면"],
+"경상북도|의성군":["봉양면","비안면","구천면","금성면","가음면","다인면","단촌면","단북면","안계면","안평면","신평면","옥산면","의성읍","점곡면","춘산면"],
+"경상북도|청도군":["각남면","풍각면","금천면","화양읍","각북면","매전면","청도읍","이서면"],
+"경상북도|청송군":["부남면","현동면","안덕면","주왕산면","진보면","청송읍","파천면","현서면"],
+"경상북도|칠곡군":["가산면","지천면","약목면","왜관읍","석적읍","동명면","북삼읍","기산면"],
+"경상북도|포항시":["지곡동","기계면","흥해읍","구룡포읍","오천읍","기북면","대송면","환호동","대도동","대동","우현동","호미곶면","대잠동","죽도동","용흥동","동해면","두호동","창포동","죽장면","송도동","송라면","신광면","상도동","양덕동","장기면","득량동","학잠동","연일읍","청하면","인덕동","장성동","청림동","학산동","이동","덕산동","효자동"],
+"대구광역시|군위군":["군위읍","우보면","소보면","부계면","효령면","삼국유사면","의흥면"],
+"대구광역시|남구":["대명동","봉덕동","이천동"],
+"대구광역시|달서구":["상인동","성당동","용산동","두류동","월성동","도원동","감삼동","본동","송현동","대곡동","장기동","이곡동","본리동","신당동","유천동","진천동","죽전동","대천동","호산동"],
+"대구광역시|달성군":["가창면","옥포읍","구지면","논공읍","다사읍","하빈면","화원읍","유가읍","현풍읍"],
+"대구광역시|동구":["신서동","백안동","덕곡동","대구강동","신암동","각산동","대구동","방촌동","동호동","서호동","봉무동","불로동","괴전동","숙천동","신천동","율하동","효목동","입석동","지묘동","부동","신기동","정동","신평동"],
+"대구광역시|북구":["태전동","구암동","칠성동","복현동","침산동","관음동","매천동","읍내동","국우동","산격동","대구동","동천동","사수동","서변동","대현동","연경동","동호동","팔달동","학정동","동변동"],
+"대구광역시|서구":["중리동","내당동","원대동","상리동","비산동","평리동","이현동"],
+"대구광역시|수성구":["황금동","범어동","시지동","노변동","지산동","황금2동","수성동","만촌동","대구동","두산동","매호동","범물동","신매동","중동","성동","상동","파동","욱수동"],
+"대구광역시|중구":["남산동","대봉동","봉산동","대신동","삼덕동","동인동","수창동","동산동"],
+"대전광역시|대덕구":["오정동","송촌동","신탄진동","대화동","대전동","목상동","법동","비래동","덕암동","중리동","석봉동","용호동","신대동","장동","와동","읍내동"],
+"대전광역시|동구":["삼성동","가양동","가오동","대동","용운동","판암동","대전동","비룡동","성남동","신흥동","용전동","대성동","자양동","천동","추동","낭월동","상소동","세천동"],
+"대전광역시|서구":["가수원동","갈마동","흑석동","매노동","평촌동","가장동","월평동","관저동","괴정동","변동","내동","복수동","도마동","도안동","둔산동","만년동","용문동","괴곡동","정림동","탄방동"],
+"대전광역시|유성구":["봉산동","신성동","송정동","도룡동","장동","가정동","계산동","구성동","관평동","교촌동","노은동","대정동","덕명동","원내동","원신흥동","송강동","둔곡동","전민동","지족동","반석동","봉명동","상대동","용계동","하기동","어은동","용산동","신봉동","장대동","화암동","죽동","문지동","궁동","구암동","학하동"],
+"대전광역시|중구":["대사동","대흥동","문화동","목동","산성동","부사동","태평동","사정동","석교동","선화동","오류동","옥계동","유천동","중촌동","안영동","목달동","용두동"],
+"부산광역시|강서구":["강동동","죽림동","명지동","대저1동","녹산동","지사동","대저2동","성북동","봉림동","송정동","신호동"],
+"부산광역시|금정구":["두구동","구서동","장전동","서동","남산동","금성동","부곡동","청룡동","회동동"],
+"부산광역시|기장군":["일광읍","정관읍","기장읍","장안읍","일광면","철마면"],
+"부산광역시|기타":[],
+"부산광역시|남구":["감만동","대연동","문현동","용당동","용호동","성동","우암동"],
+"부산광역시|동구":["수정동","좌천동","범일동","초량동"],
+"부산광역시|동래구":["교동","온천동","명장동","낙민동","안락동","복천동","칠산동","명륜동","사직동","수안동","안락2동"],
+"부산광역시|부산진구":["가야동","개금동","당감동","전포동","부암동","양정동","초읍동","범전동","범천동","부전동","연지동"],
+"부산광역시|북구":["구포동","금곡동","화명동","덕천동","만덕동"],
+"부산광역시|사상구":["감전동","괘법동","학장동","덕포동","엄궁동","주례동","모라동","삼락동"],
+"부산광역시|사하구":["감천동","하단동","괴정동","구평동","당리동","다대동","신평동","장림동","부산자동","해동"],
+"부산광역시|서구":["동대신동","토성동","서대신동","남부민동","부용동","암남동","아미동","초장동"],
+"부산광역시|수영구":["남천동","광안동","망미동","민락동"],
+"부산광역시|연제구":["거제동","연산동","부산동"],
+"부산광역시|영도구":["동삼동","신선동","영선동","봉래동","남항동","청학동"],
+"부산광역시|중구":["대청동","영주동","광복동","보수동"],
+"부산광역시|해운대구":["우동","중동","반여동","재송동","반송동","좌동","송정동"],
+"서울특별시|강남구":["개포동","삼성동","대치동","수서동","도곡동","일원동","논현동","세곡동","역삼동","신사동","압구정동","청담동","자곡동","서울학동","중동"],
+"서울특별시|강동구":["상일동","강동","강일동","암사동","고덕동","둔촌동","천호동","명일동","서울길동","성내동","길동","서울천동"],
+"서울특별시|강북구":["수유동","번동","미아동","우이동","송중동"],
+"서울특별시|강서구":["등촌동","가양동","마곡동","공항동","화곡동","내발산동","방화동","염창동"],
+"서울특별시|관악구":["봉천동","신림동","남현동"],
+"서울특별시|광진구":["화양동","능동","광장동","자양동","중곡동","구의동","군자동"],
+"서울특별시|구로구":["개봉동","고척동","구로동","오류동","궁동","서울동","신도림동","가리봉동","온수동","천왕동","항동"],
+"서울특별시|금천구":["독산동","시흥동","서울금동"],
+"서울특별시|노원구":["하계동","공릉동","월계동","상계동","중계동","중계1동","서울동"],
+"서울특별시|도봉구":["창동","도봉동","쌍문동","방학동"],
+"서울특별시|동대문구":["회기동","신설동","장안동","전농동","답십리동","휘경동","용두동","이문동","서울전동","제기동","청량리동"],
+"서울특별시|동작구":["대방동","상도동","동작동","사당동","신대방동","흑석동","상도1동","노량진동","서울동","서울본동","본동"],
+"서울특별시|마포구":["연남동","신수동","상암동","공덕동","망원동","염리동","도화동","상수동","서교동","합정동","성산동","아현동","중동","대흥동","노고산동"],
+"서울특별시|서대문구":["북가좌동","천연동","홍은동","연희동","남가좌동","홍제동","대현동","미근동","북아현동","창천동","신촌동","대신동","현저동"],
+"서울특별시|서초구":["잠원동","반포동","신원동","내곡동","방배동","서초동","염곡동","양재동","우면동","신동"],
+"서울특별시|성동구":["성수동","응봉동","금호동","하왕십리동","마장동","행당동","서울동","옥수동","사근동","송정동"],
+"서울특별시|성북구":["돈암동","삼선동","길음동","정릉동","장위동","보문동","성북동","동소문동","종암동","하월곡동","서울동","석관동","안암동","상월곡동"],
+"서울특별시|송파구":["송파동","가락동","거여동","풍납동","문정동","장지동","방이동","삼전동","오금동","마천동","잠실동","석촌동","신천동","영동"],
+"서울특별시|양천구":["목동","신월동","신정동"],
+"서울특별시|영등포구":["양평동","당산동","대림동","신길동","문래동","서울대동","여의도동","도림동","영등포동"],
+"서울특별시|용산구":["서계동","용산동","효창동","한남동","이태원동","후암동","서빙고동","이촌동","산천동","청파동","보광동"],
+"서울특별시|은평구":["구산동","갈현동","신사동","대조동","불광동","녹번동","진관동","수색동","역촌동","응암동","증산동"],
+"서울특별시|종로구":["청운동","혜화동","계동","행촌동","안국동","송현동","필운동","홍지동","경운동","신교동","숭인동","이화동","동숭동","무악동","서울매동","창신동","신영동","평창동","서울재동","효제동","사직동","운니동","구기동"],
+"서울특별시|중구":["신당동","인현동","예장동","남산동","정동","만리동","장충동","성동","흥인동","순화동","명동"],
+"서울특별시|중랑구":["신내동","망우동","면목동","상봉동","서울동","서울면","서울묵동","묵동","중화동","망우본동"],
+"세종특별자치시|세종시":["새롬동","고운동","금남면","소담동","아름동","나성동","도담동","종촌동","다정동","대평동","한솔동","산울동","반곡동","보람동","부강면","조치원읍","어진동","연서면","세종동","집현동","소정면","연기면","연동면","장군면","전동면","전의면","해밀동"],
+"울산광역시|남구":["달동","선암동","옥동","야음동","두왕동","무거동","삼산동","신정동","장생포동"],
+"울산광역시|동구":["서부동","화정동","동부동","일산동","방어동","전하동","주전동"],
+"울산광역시|북구":["산하동","화봉동","송정동","달천동","호계동","신천동","천곡동","매곡동","중산동","명촌동","연암동","상안동","염포동","효문동","양정동","진장동","대안동"],
+"울산광역시|울주군":["범서읍","온양읍","온산읍","두서면","두동면","서생면","청량읍","언양읍","삼남읍","삼동면","상북면","웅촌면"],
+"울산광역시|중구":["반구동","남외동","다운동","태화동","약사동","성안동","서동","복산동","교동","학성동","우정동","유곡동"],
+"인천광역시|강화군":["강화읍","길상면","하점면","교동면","내가면","양도면","불은면","삼산면","서도면","선원면","송해면","화도면","양사면"],
+"인천광역시|검단구":["불로동","마전동","당하동","백석동","원당동","금곡동","오류동","왕길동"],
+"인천광역시|계양구":["효성동","계산동","용종동","귤현동","서운동","작전동","장기동","상야동","동양동","병방동","박촌동","방축동"],
+"인천광역시|남동구":["간석동","구월동","만수동","논현동","서창동","인천남동","남촌동","도림동","인천인동"],
+"인천광역시|미추홀구":["관교동","문학동","도화동","용현동","학익동","주안동","숭의동"],
+"인천광역시|부평구":["갈산동","부개동","십정동","산곡동","부평동","삼산동","구산동","청천동","인천성동","일신동"],
+"인천광역시|서해구":["가좌동","석남동","가좌4동","검암동","공촌동","연희동","신현동","가정동","경서동","청라동","심곡동"],
+"인천광역시|연수구":["송도동","선학동","옥련동","동춘동","연수동","청학동"],
+"인천광역시|영종구":["운북동","운남동","남북동","운서동","중산동"],
+"인천광역시|옹진군":["대청면","덕적면","백령면","연평면","영흥면","북도면","자월면"],
+"인천광역시|제물포구":["도원동","송림동","답동","신흥동","창영동","송학동","화수동","율목동","금곡동","전동","북성동","선린동"],
+"인천광역시|중구":["운북동"],
+"전남광주통합특별시(광주)|광산구":["장덕동","우산동","임곡동","신가동","송정동","월계동","신창동","운남동","월곡동","도산동","하산동","서봉동","수완동","운수동","남산동","산월동","비아동","산정동","도덕동","삼도동","흑석동","선암동","소촌동","용동","옥동","하남동"],
+"전남광주통합특별시(광주)|남구":["월산동","서동","광주동","방림동","백운동","주월동","송하동","양림동","진월동","지석동","봉선동","월성동","임암동","노대동","행암동"],
+"전남광주통합특별시(광주)|동구":["계림동","소태동","광주동","산수동","서석동","용산동","궁동","운림동","지산동","장동","학동","내남동"],
+"전남광주통합특별시(광주)|북구":["각화동","신용동","운암동","삼각동","용봉동","매곡동","오룡동","풍향동","광주동","두암동","망월동","충효동","유동","효령동","임동","오치동","일곡동","북동","양산동","신안동","우산동","누문동","중흥동","지야동","광주효동","동림동","문흥동","본촌동","용두동","일동"],
+"전남광주통합특별시(광주)|서구":["치평동","화정동","동천동","농성동","유촌동","매월동","쌍촌동","금호동","덕흥동","양동","풍암동","세하동","광천동"],
+"전남광주통합특별시(전남)|강진군":["강진읍","대구면","작천면","칠량면","군동면","성전면","도암면","마량면","병영면","신전면","옴천면"],
+"전남광주통합특별시(전남)|고흥군":["고흥읍","과역면","남양면","대서면","도덕면","도화면","동일면","점암면","풍양면","금산면","도양읍","동강면","두원면","봉래면","영남면","포두면"],
+"전남광주통합특별시(전남)|곡성군":["고달면","곡성읍","삼기면","석곡면","오산면","옥과면","입면","죽곡면","목사동면"],
+"전남광주통합특별시(전남)|광양시":["황길동","광영동","봉강면","성황동","다압면","광양읍","광양마동","중동","마동","금호동","광양중동","진월면","옥룡면","옥곡면","진상면","태인동"],
+"전남광주통합특별시(전남)|구례군":["간전면","광의면","구례읍","토지면","용방면","산동면","문척면","마산면"],
+"전남광주통합특별시(전남)|나주시":["공산면","남평읍","경현동","금천면","교동","대호동","빛가람동","다시면","동강면","문평면","반남면","봉황면","청동","산포면","성북동","죽림동","남외동","다도면","노안면","세지면","왕곡면","삼영동","이창동","영산동","용산동"],
+"전남광주통합특별시(전남)|담양군":["가사문학면","고서면","금성면","담양읍","수북면","대덕면","무정면","봉산면","용면","월산면","창평면","대전면"],
+"전남광주통합특별시(전남)|목포시":["용해동","용당동","호남동","대성동","죽교동","목포동","옥암동","연산동","북교동","산정동","상동","서산동","석현동","경동","유달동","달동","양동","대양동"],
+"전남광주통합특별시(전남)|무안군":["삼향읍","운남면","망운면","몽탄면","무안읍","일로읍","청계면","현경면","해제면"],
+"전남광주통합특별시(전남)|보성군":["겸백면","벌교읍","노동면","보성읍","득량면","문덕면","미력면","복내면","회천면","율어면","조성면"],
+"전남광주통합특별시(전남)|순천시":["낙안면","해룡면","서면","별량면","상사면","조례동","인제동","풍덕동","저전동","연향동","홍내동","매곡동","석현동","남정동","동외동","송광면","승주읍","왕지동","용당동","월등면","생목동","인월동","가곡동","주암면","덕월동","대룡동","외서면","황전면"],
+"전남광주통합특별시(전남)|신안군":["흑산면","도초면","비금면","신의면","증도면","압해읍","안좌면","암태면","임자면","자은면","장산면","지도읍","팔금면","하의면"],
+"전남광주통합특별시(전남)|여수시":["삼산면","경호동","소라면","화양면","선원동","돌산읍","남면","화정면","화장동","안산동","상암동","묘도동","신기동","율촌면","학동","소호동","봉계동","수정동","군자동","국동","남산동","공화동","문수동","미평동","봉산동","여서동","만흥동","서교동","웅천동","신월동","관문동","덕충동","종화동","광무동","봉강동","주삼동"],
+"전남광주통합특별시(전남)|영광군":["군남면","군서면","대마면","묘량면","백수읍","법성면","불갑면","염산면","낙월면","영광읍","홍농읍"],
+"전남광주통합특별시(전남)|영암군":["군서면","금정면","삼호읍","덕진면","도포면","학산면","미암면","시종면","신북면","영암읍","서호면"],
+"전남광주통합특별시(전남)|완도군":["고금면","군외면","금당면","금일읍","생일면","노화읍","보길면","소안면","신지면","약산면","완도읍","청산면"],
+"전남광주통합특별시(전남)|장성군":["동화면","장성읍","북이면","북일면","남면","삼계면","삼서면","서삼면","북하면","황룡면","진원면"],
+"전남광주통합특별시(전남)|장흥군":["관산읍","대덕읍","회진면","부산면","안양면","용산면","유치면","장동면","장평면","장흥읍"],
+"전남광주통합특별시(전남)|진도군":["고군면","군내면","임회면","의신면","조도면","지산면","진도읍"],
+"전남광주통합특별시(전남)|함평군":["함평읍","나산면","대동면","손불면","신광면","엄다면","월야면","학교면","해보면"],
+"전남광주통합특별시(전남)|해남군":["계곡면","북일면","마산면","북평면","산이면","삼산면","송지면","옥천면","문내면","해남읍","현산면","화산면","화원면","황산면"],
+"전남광주통합특별시(전남)|화순군":["능주면","도곡면","동면","동복면","사평면","백아면","이양면","화순읍","도암면","청풍면","춘양면","한천면","이서면"],
+"전북특별자치도|고창군":["신림면","고창읍","고수면","성송면","부안면","흥덕면","공음면","대산면","아산면","해리면","무장면","상하면","성내면","심원면"],
+"전북특별자치도|군산시":["개정면","동흥남동","송풍동","임피면","개정동","군산동","나운동","문화동","월명동","지곡동","옥구읍","조촌동","성산면","수송동","나포면","옥산면","대야면","옥도면","서수면","회현면","옥서면","소룡동","삼학동"],
+"전북특별자치도|김제시":["공덕면","광활면","금구면","금산면","신풍동","김제동","죽산면","백구면","황산면","만경읍","부량면","봉남면","성덕면","용지면","백산면","진봉면","청하면"],
+"전북특별자치도|남원시":["금지면","향교동","월락동","대산면","왕정동","도통동","노암동","대강면","덕과면","보절면","사매면","산내면","산동면","송동면","수지면","아영면","이백면","운봉읍","주천면","인월면","주생면"],
+"전북특별자치도|무주군":["적상면","설천면","무주읍","무풍면","부남면","안성면"],
+"전북특별자치도|부안군":["변산면","계화면","진서면","부안읍","동진면","백산면","보안면","상서면","위도면","행안면","줄포면","주산면","하서면"],
+"전북특별자치도|순창군":["구림면","금과면","동계면","복흥면","순창읍","쌍치면","유등면","인계면","적성면","팔덕면","풍산면"],
+"전북특별자치도|완주군":["경천면","용진읍","고산면","구이면","상관면","동상면","소양면","봉동읍","비봉면","삼례읍","이서면","화산면","운주면"],
+"전북특별자치도|익산시":["금마면","신동","낭산면","함열읍","망성면","삼기면","성당면","황등면","여산면","오산면","왕궁면","용안면","웅포면","부송동","모현동","남중동","영등동","이리동","이리신동","인화동","익산궁동","용제동","평화동","덕기동","춘포면","함라면","용동면"],
+"전북특별자치도|임실군":["강진면","관촌면","신평면","덕치면","운암면","삼계면","성수면","오수면","임실읍","지사면","청웅면"],
+"전북특별자치도|장수군":["계남면","계북면","장계면","번암면","산서면","장수읍","천천면"],
+"전북특별자치도|전주시":["효자동","장동","삼천동","평화동","여의동","인후동","송천동","금암동","중노송동","서서학동","중화산동","덕진동","전주동","교동","전주신동","전주원동","전주장동","남노송동","서신동","중인동"],
+"전북특별자치도|정읍시":["감곡면","고부면","산내면","과교동","입암면","덕천면","흑암동","칠보면","북면","산외면","수성동","소성면","신태인읍","영원면","옹동면","이평면","태인면","정우면","시기동","정읍","정읍동","상동","금붕동"],
+"전북특별자치도|진안군":["동향면","마령면","백운면","부귀면","용담면","안천면","진안읍","성수면","정천면","주천면"],
+"제주특별자치도|서귀포시":["표선면","강정동","남원읍","동홍동","대정읍","안덕면","도순동","성산읍","법환동","보목동","토평동","서호동","서홍동","서귀동","상효동","호근동","상예동","대포동","중문동","하원동","하효동","신효동"],
+"제주특별자치도|제주시":["한경면","애월읍","이도일동","구좌읍","한림읍","이도이동","연동","노형동","봉개동","조천읍","도남동","도련일동","도두일동","도평동","일도이동","화북일동","삼양이동","영평동","아라이동","아라일동","월평동","오라이동","외도이동","우도면","삼도이동","용담삼동","건입동","용담이동","삼도일동","용담일동","추자면","해안동"],
+"충청남도|계룡시":["두마면","금암동","엄사면","신도안면"],
+"충청남도|공주시":["계룡면","중학동","교동","금학동","웅진동","유구읍","봉황동","반죽동","신관동","중동","송선동","금흥동","금성동","옥룡동","우성면","사곡면","반포면","정안면","의당면","신풍면","이인면","탄천면","신기동"],
+"충청남도|금산군":["군북면","금산읍","진산면","금성면","남이면","남일면","복수면","부리면","추부면","제원면"],
+"충청남도|기타":[],
+"충청남도|논산시":["가야곡면","부적면","강경읍","양촌면","광석면","연무읍","취암동","관촉동","노성면","내동","논산내동","등화동","반월동","부창동","강산동","벌곡면","연산면","상월면","성동면","은진면","채운면"],
+"충청남도|당진시":["읍내동","고대면","송악읍","송산면","채운동","합덕읍","대호지면","대덕동","면천면","순성면","석문면","신평면","사기소동","수청동","우강면","원당동","정미면"],
+"충청남도|보령시":["성주면","주교면","오천면","남포면","대천동","명천동","웅천읍","죽정동","동대동","신흑동","내항동","미산면","주포면","청라면","주산면","천북면","청소면"],
+"충청남도|부여군":["구룡면","부여읍","규암면","내산면","임천면","석성면","세도면","양화면","옥산면","외산면","은산면","장암면","초촌면","홍산면"],
+"충청남도|서산시":["부석면","고북면","대산읍","운산면","음암면","지곡면","읍내동","서동","동문동","죽성동","석남동","해미면","예천동","석림동","성연면","오남동","인지면","팔봉면"],
+"충청남도|서천군":["기산면","마서면","마산면","종천면","비인면","서천읍","서면","장항읍","시초면","판교면","한산면","화양면"],
+"충청남도|아산시":["송악면","둔포면","배방읍","인주면","도고면","탕정면","모종동","음봉면","선장면","염치읍","배미동","신창면","영인면","온천동","용화동","권곡동","실옥동","풍기동","읍내동","초사동"],
+"충청남도|예산군":["고덕면","광시면","예산읍","대술면","대흥면","삽교읍","덕산면","봉산면","신암면","신양면","오가면","응봉면"],
+"충청남도|천안시":["광덕면","풍세면","쌍용동","성환읍","목천읍","삼룡동","병천면","성황동","신부동","직산읍","성거읍","성남면","수신면","안서동","입장면","북면","동면","유량동","성성동","청당동","봉명동","구성동","원성동","두정동","백석동","부대동","불당동","신당동","신방동","성정동","업성동","와촌동","용곡동","다가동","오룡동","차암동","청수동"],
+"충청남도|청양군":["비봉면","남양면","목면","대치면","운곡면","장평면","정산면","청남면","청양읍","화성면"],
+"충청남도|태안군":["고남면","근흥면","남면","원북면","소원면","안면읍","태안읍","이원면"],
+"충청남도|홍성군":["갈산면","결성면","광천읍","구항면","홍동면","금마면","홍북읍","서부면","홍북면","은하면","장곡면","홍성읍"],
+"충청북도|괴산군":["감물면","괴산읍","불정면","문광면","청안면","사리면","소수면","청천면","연풍면","장연면","칠성면"],
+"충청북도|단양군":["가곡면","매포읍","단성면","단양읍","영춘면","적성면","대강면","어상천면"],
+"충청북도|보은군":["마로면","내북면","보은읍","탄부면","삼승면","장안면","속리산면","수한면","회남면","회인면"],
+"충청북도|영동군":["용산면","매곡면","영동읍","상촌면","황간면","심천면","양강면","양산면","용화면","추풍령면","학산면"],
+"충청북도|옥천군":["옥천읍","군서면","동이면","안남면","안내면","이원면","군북면","청산면","청성면"],
+"충청북도|음성군":["감곡면","원남면","맹동면","음성읍","금왕읍","대소읍","삼성면","생극면","소이면"],
+"충청북도|제천시":["금성면","영천동","남천동","장락동","신백동","청전동","천남동","흑석동","명지동","백운면","봉양읍","신월동","송학면","수산면","하소동","의림동","덕산면","고명동","서부동","동현동","청풍면","강제동","한수면","모산동","화산동"],
+"충청북도|증평군":["도안면","증평읍"],
+"충청북도|진천군":["덕산읍","광혜원면","초평면","이월면","문백면","백곡면","진천읍"],
+"충청북도|청주시":["송절동","오송읍","남일면","복대동","가덕면","오창읍","남이면","강내면","비하동","개신동","가경동","교동","금천동","분평동","낭성면","내수읍","방서동","북이면","수동","신봉동","우암동","율량동","모충동","문의면","미원면","봉명동","주중동","사직동","사천동","산남동","용담동","용암동","서촌동","석교동","성화동","미평동","수곡동","옥산면","현도면","월오동","용정동","운천동","탑동","영동","죽림동","사창동","영운동","내덕동","현암동","공동"],
+};
+
+function toggleDong(btn) {
+  var key = btn.dataset.key;
+  var container = btn.closest('.region-chips');
+  var existing = container.querySelector('.dong-panel');
+  var wasOpenForThis = existing && existing.dataset.forKey === key;
+  if (existing) existing.remove();
+  container.querySelectorAll('.region-chip').forEach(function(c) { c.classList.remove('active'); });
+  if (wasOpenForThis) return;
+  var dongs = (window.DONG_DATA || {})[key] || [];
+  var panel = document.createElement('div');
+  panel.className = 'dong-panel';
+  panel.dataset.forKey = key;
+  panel.innerHTML = dongs.length
+    ? dongs.map(function(d) { return '<span class="dong-tag">' + d + '</span>'; }).join('')
+    : '동·읍·면 정보가 없습니다.';
+  btn.insertAdjacentElement('afterend', panel);
+  btn.classList.add('active');
 }
 </script>
 </body>
