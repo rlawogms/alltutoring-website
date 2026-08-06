@@ -140,6 +140,29 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 .hero h1 span { color: #FFB400; }
 .hero p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 32px; position: relative; z-index: 1; }
 .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+.site-search-wrap { position: relative; max-width: 460px; margin: 0 auto 22px; z-index: 2; }
+.site-search-box {
+  display: flex; align-items: center; gap: 8px; background: #fff;
+  border-radius: 10px; padding: 12px 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.site-search-box i { color: #999; font-size: 16px; }
+.site-search-box input {
+  border: none; outline: none; flex: 1; font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif; color: #333; background: transparent;
+}
+.site-search-results {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: #fff; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  overflow-y: auto; max-height: 320px; display: none; text-align: left;
+}
+.site-search-results.show { display: block; }
+.site-search-item { display: block; padding: 10px 16px; text-decoration: none; border-bottom: 1px solid #F0F0F0; }
+.site-search-item:last-child { border-bottom: none; }
+.site-search-item:hover { background: #F5F7FB; }
+.site-search-item-title { font-size: 13.5px; font-weight: 700; color: #0D2B6B; }
+.site-search-item-desc { font-size: 11.5px; color: #888; margin-top: 2px; }
+.site-search-empty { padding: 16px; text-align: center; color: #999; font-size: 13px; }
 .btn-primary {
   background: #FFB400; color: #0D2B6B; border: none;
   padding: 14px 30px; border-radius: 8px; font-size: 15px; font-weight: 700;
@@ -339,6 +362,13 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   <div class="hero-badge">✦ 전국 어디서나, 대면·비대면 모두 가능</div>
   <h1>우리 아이만을 위한<br><span>1:1 맞춤 과외</span>, 전국 어디서나</h1>
   <p>국어 · 영어 · 수학 · 과학 · 사회 전 과목<br>방문 대면 수업 + 화상 비대면 수업, 원하는 방식으로 자유롭게</p>
+  <div class="site-search-wrap">
+    <div class="site-search-box">
+      <i class="ti ti-search"></i>
+      <input type="text" id="siteSearchInput" placeholder="과목, 선생님, 후기, 지역 등 검색" oninput="renderSiteSearch()" onfocus="renderSiteSearch()">
+    </div>
+    <div class="site-search-results" id="siteSearchResults"></div>
+  </div>
   <div class="hero-btns">
     <a href="tel:01084117380" class="btn-primary" onclick="handleCallBtn(event)">무료 매칭 상담 신청</a>
     <a href="#about" class="btn-outline">과외 안내 보기</a>
@@ -370,7 +400,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   </div>
 </section>
 
-<section class="section-bg">
+<section class="section-bg" id="subjects">
   <div class="accent-line"></div>
   <div class="section-title">개설 과목 안내</div>
   <div class="section-sub">초등부터 고등까지, 필요한 모든 과목을 1:1로 맞춤 지도합니다</div>
@@ -1240,6 +1270,45 @@ function setTab(el) {
     if (desc) card.querySelector('.subject-desc').innerHTML = desc;
   });
 }
+</script>
+<script>
+var SITE_SEARCH_INDEX = [
+  { title: '개설 과목 - 국어', desc: '문학·비문학 독해, 논술 및 서술형 대비', url: '#subjects', kw: '국어 과목 문학 비문학 독해 논술 서술형' },
+  { title: '개설 과목 - 영어', desc: '회화·문법·독해·내신 목표별 집중 수업', url: '#subjects', kw: '영어 과목 회화 문법 독해 내신' },
+  { title: '개설 과목 - 수학', desc: '개념 완성부터 심화까지 단계별 맞춤 커리큘럼', url: '#subjects', kw: '수학 과목 개념 내신 수능' },
+  { title: '개설 과목 - 과학', desc: '물리·화학·생명·지구과학 개념·내신 집중 대비', url: '#subjects', kw: '과학 과목 물리 화학 생명 지구과학' },
+  { title: '개설 과목 - 사회', desc: '역사·지리·일반사회 개념 학습', url: '#subjects', kw: '사회 과목 역사 지리 일반사회' },
+  { title: '수업 방식 안내', desc: '대면 방문 수업과 비대면 화상 수업 안내', url: '#about', kw: '수업 방식 대면 비대면 화상 방문' },
+  { title: '선생님 소개 - 김○○ (수학)', desc: '前 고등학교 수학 교사 · 경력 9년', url: 'teachers.html', kw: '김 선생님 수학 고등교사 임용' },
+  { title: '선생님 소개 - 박○○ (영어)', desc: '前 대형 어학원 대표강사 · 경력 12년', url: 'teachers.html', kw: '박 선생님 영어 대형학원 강사' },
+  { title: '선생님 소개 - 이○○ (국어)', desc: '국어국문학과 재학 · 수능 국어 만점', url: 'teachers.html', kw: '이 선생님 국어 명문대 재학생' },
+  { title: '선생님 소개 - 최○○ (과학)', desc: '임용고시 합격 · 과학 개념 지도 전문', url: 'teachers.html', kw: '최 선생님 과학 임용고시' },
+  { title: '선생님 소개 - 정○○ (사회)', desc: '사회탐구 전문, 서술형 대비 지도', url: 'teachers.html', kw: '정 선생님 사회 사회탐구' },
+  { title: '선생님 소개 - 한○○ (영어)', desc: '유학파 선생님, 원어민 발음 교정 전문', url: 'teachers.html', kw: '한 선생님 영어 유학파' },
+  { title: '수강료 안내', desc: '대면·비대면 수업 시간당 수강료 확인', url: '#tuition', kw: '수강료 비용 가격 시간당 요금' },
+  { title: '학부모 후기', desc: '실제 학부모·학생들의 생생한 후기', url: 'reviews.html', kw: '후기 리뷰 평가 학부모 만족도' },
+  { title: '무료 상담 신청', desc: '전화 또는 온라인 폼으로 상담 신청', url: '#consult', kw: '상담 신청 문의 전화 매칭' },
+  { title: '지역별 학교 찾아보기', desc: '전국 시·구·군·동·읍·면 학교 정보 확인', url: 'regions.html', kw: '지역 학교 동 읍 면 시 구 군 확인' }
+];
+function renderSiteSearch() {
+  var q = document.getElementById('siteSearchInput').value.trim();
+  var resultsEl = document.getElementById('siteSearchResults');
+  if (!q) { resultsEl.classList.remove('show'); resultsEl.innerHTML = ''; return; }
+  var matches = SITE_SEARCH_INDEX.filter(function(item) {
+    return (item.title + ' ' + item.kw).indexOf(q) !== -1;
+  });
+  resultsEl.innerHTML = matches.length
+    ? matches.map(function(item) {
+        return '<a class="site-search-item" href="' + item.url + '"><div class="site-search-item-title">' + item.title + '</div><div class="site-search-item-desc">' + item.desc + '</div></a>';
+      }).join('')
+    : '<div class="site-search-empty">검색 결과가 없습니다.</div>';
+  resultsEl.classList.add('show');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.site-search-wrap')) {
+    document.getElementById('siteSearchResults').classList.remove('show');
+  }
+});
 </script>
 </body>
 </html>
