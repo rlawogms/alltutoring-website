@@ -57,7 +57,23 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 .feed-notice { margin-top: 16px; font-size: 13px; color: #8a8a80; line-height: 1.7; display: flex; align-items: center; gap: 6px; }
 
 .feed-section { padding: 36px 40px 60px; background: #F6F2EA; }
+
+.teacher-filter-bar { margin-bottom: 24px; }
+.teacher-filter-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.teacher-filter-chip {
+  background: #fff; border: 1.5px solid #E0E6F0; color: #444; font-size: 13.5px; font-weight: 700;
+  padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+}
+.teacher-filter-chip.active { background: #0D2B6B; color: #fff; border-color: #0D2B6B; }
+.teacher-region-note {
+  display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #0D2B6B;
+  background: #F0F6FF; border-radius: 8px; padding: 8px 14px; width: fit-content;
+}
+
 .teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.teacher-card.hide { display: none; }
+.teacher-empty { display: none; text-align: center; padding: 40px 0; color: #999; font-size: 14px; }
+.teacher-empty.show { display: block; }
 
 .teacher-card {
   background: #fff; border: 1px solid #E0E6F0; border-radius: 12px;
@@ -146,8 +162,19 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 </section>
 
 <section class="feed-section">
-  <div class="teacher-grid">
-    <div class="teacher-card">
+  <div class="teacher-filter-bar">
+    <div class="teacher-filter-chips" id="subjectFilterChips">
+      <button type="button" class="teacher-filter-chip active" onclick="filterTeachers(this,'전체')">전체</button>
+      <button type="button" class="teacher-filter-chip" onclick="filterTeachers(this,'국어')">국어</button>
+      <button type="button" class="teacher-filter-chip" onclick="filterTeachers(this,'영어')">영어</button>
+      <button type="button" class="teacher-filter-chip" onclick="filterTeachers(this,'수학')">수학</button>
+      <button type="button" class="teacher-filter-chip" onclick="filterTeachers(this,'과학')">과학</button>
+      <button type="button" class="teacher-filter-chip" onclick="filterTeachers(this,'사회')">사회</button>
+    </div>
+    <div class="teacher-region-note"><i class="ti ti-map-pin"></i> 지역 상관없이 전국 방문·화상 수업 매칭이 가능합니다</div>
+  </div>
+  <div class="teacher-grid" id="teacherGrid">
+    <div class="teacher-card" data-subject="수학">
       <div class="teacher-avatar av-blue">김</div>
       <div>
         <div class="teacher-badge">전직 고등 교사</div>
@@ -155,7 +182,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
         <div class="teacher-desc">전직 고등학교 수학 교사 · 임용 경력 9년<br>내신 출제 경향과 수능 연계 학습에 강점, 방문·화상 수업 모두 가능</div>
       </div>
     </div>
-    <div class="teacher-card">
+    <div class="teacher-card" data-subject="영어">
       <div class="teacher-avatar av-amber">박</div>
       <div>
         <div class="teacher-badge">전직 대형학원 강사</div>
@@ -163,7 +190,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
         <div class="teacher-desc">전직 대형 어학원 대표강사 · 경력 12년<br>회화·문법·독해 전 영역 지도, 원어민 발음 교정 및 내신·수능 병행 지도</div>
       </div>
     </div>
-    <div class="teacher-card">
+    <div class="teacher-card" data-subject="국어">
       <div class="teacher-avatar av-teal">이</div>
       <div>
         <div class="teacher-badge">명문대 재학생</div>
@@ -171,7 +198,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
         <div class="teacher-desc">서울 소재 국어국문학과 재학 · 수능 국어 만점<br>또래 눈높이에 맞춘 친근한 수업 진행, 비대면 화상 수업 전문</div>
       </div>
     </div>
-    <div class="teacher-card">
+    <div class="teacher-card" data-subject="과학">
       <div class="teacher-avatar av-sky">최</div>
       <div>
         <div class="teacher-badge">임용고시 합격</div>
@@ -179,7 +206,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
         <div class="teacher-desc">중등 과학 임용고시 합격 · 과외 지도 경력 6년<br>실험 원리부터 개념까지 체계적으로 연결하는 수업, 방문 수업 가능</div>
       </div>
     </div>
-    <div class="teacher-card">
+    <div class="teacher-card" data-subject="사회">
       <div class="teacher-avatar av-rose">정</div>
       <div>
         <div class="teacher-badge">사회탐구 전문</div>
@@ -187,7 +214,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
         <div class="teacher-desc">공무원 수험 전문 강사 출신 · 경력 10년<br>방대한 암기량을 흐름과 구조로 정리해주는 개념 중심 수업</div>
       </div>
     </div>
-    <div class="teacher-card">
+    <div class="teacher-card" data-subject="영어">
       <div class="teacher-avatar av-purple">한</div>
       <div>
         <div class="teacher-badge">유학파 선생님</div>
@@ -196,6 +223,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
       </div>
     </div>
   </div>
+  <div class="teacher-empty" id="teacherEmpty">해당 과목의 예시 선생님이 아직 없어요. 상담 신청 시 원하시는 과목의 선생님을 매칭해드립니다.</div>
 </section>
 
 <section class="cta-section" id="consult">
@@ -226,6 +254,19 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
       else { btn.classList.remove('show'); }
     });
   })();
+
+  function filterTeachers(el, subject) {
+    document.querySelectorAll('#subjectFilterChips .teacher-filter-chip').forEach(function(c) { c.classList.remove('active'); });
+    el.classList.add('active');
+    var cards = document.querySelectorAll('#teacherGrid .teacher-card');
+    var visibleCount = 0;
+    cards.forEach(function(card) {
+      var match = subject === '전체' || card.dataset.subject === subject;
+      card.classList.toggle('hide', !match);
+      if (match) visibleCount++;
+    });
+    document.getElementById('teacherEmpty').classList.toggle('show', visibleCount === 0);
+  }
 </script>
 
 </body>
