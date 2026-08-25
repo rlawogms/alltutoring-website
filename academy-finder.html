@@ -22,6 +22,13 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://alltutoring-website.co.kr/"},{"@type":"ListItem","position":2,"name":"근처 학원 찾기","item":"https://alltutoring-website.co.kr/academy-finder.html"}]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"과외 대신 학원이 나을 때는 언제인가요?","acceptedAnswer":{"@type":"Answer","text":"또래와 함께 배우는 긴장감이 필요할 때, 정기적으로 등원하는 학습 루틴이 필요할 때, 학년별로 검증된 커리큘럼을 그대로 따라가고 싶을 때 학원이 더 잘 맞을 수 있습니다."}},
+{"@type":"Question","name":"학원을 직접 연결해주기도 하나요?","acceptedAnswer":{"@type":"Answer","text":"네, 같은 계열의 소수정예 보습학원 와와학습코칭센터를 연결해드립니다. 전국 200여개 지점 중 가까운 곳을 안내받으실 수 있습니다."}},
+{"@type":"Question","name":"그래도 과외가 필요하면 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"학원과 과외 중 무엇이 맞을지 판단이 어려우시다면 무료 매칭 상담을 신청해주세요. 상담 신청과 안내 과정에는 별도 비용이 들지 않습니다."}}
+]}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <script>
@@ -94,6 +101,14 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 .academy-box h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; }
 .academy-box p { color: rgba(255,255,255,0.75); font-size: 13.5px; line-height: 1.8; margin-bottom: 22px; }
 .academy-box-btn { display: inline-flex; align-items: center; gap: 6px; background: #FFB400; color: #0D2B6B; padding: 13px 26px; border-radius: 8px; font-size: 14.5px; font-weight: 700; text-decoration: none; }
+
+.faq-list { display: flex; flex-direction: column; gap: 10px; max-width: 760px; margin: 0 auto; }
+.faq-item { border: 1px solid #E0E6F0; border-radius: 10px; overflow: hidden; background: #fff; }
+.faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; font-size: 14.5px; font-weight: 700; color: #1a1a1a; display: flex; align-items: center; gap: 10px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::before { content: 'Q'; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: #0D2B6B; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.faq-item[open] summary { border-bottom: 1px solid #E0E6F0; }
+.faq-answer { padding: 16px 20px 18px 52px; font-size: 13.5px; color: #555; line-height: 1.8; }
 
 .cta-section { background: #FFF3E0; padding: 48px 40px; text-align: center; margin-top: 20px; }
 .cta-section h2 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; }
@@ -203,6 +218,24 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
     <div class="step-item"><span class="step-num">3</span><span class="step-text"><strong>필요한 정보 진행 후 내원 상담 일정 조율</strong> — 매칭에 필요한 정보를 확인한 뒤, 필요 시 가까운 학원 또는 상담 가능한 곳과 내원 상담 일정을 함께 조율해드립니다.</span></div>
   </div>
   <p style="margin-top:16px; font-size:14.5px; color:#444;">상담 신청과 안내 과정에는 별도 비용이 들지 않습니다.</p>
+</section>
+
+<section class="feed-section">
+  <h2>자주 묻는 질문</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>과외 대신 학원이 나을 때는 언제인가요?</summary>
+      <div class="faq-answer">또래와 함께 배우는 긴장감이 필요할 때, 정기적으로 등원하는 학습 루틴이 필요할 때, 학년별로 검증된 커리큘럼을 그대로 따라가고 싶을 때 학원이 더 잘 맞을 수 있습니다.</div>
+    </details>
+    <details class="faq-item">
+      <summary>학원을 직접 연결해주기도 하나요?</summary>
+      <div class="faq-answer">네, 같은 계열의 소수정예 보습학원 와와학습코칭센터를 연결해드립니다. 전국 200여개 지점 중 가까운 곳을 안내받으실 수 있습니다.</div>
+    </details>
+    <details class="faq-item">
+      <summary>그래도 과외가 필요하면 어떻게 하나요?</summary>
+      <div class="faq-answer">학원과 과외 중 무엇이 맞을지 판단이 어려우시다면 무료 매칭 상담을 신청해주세요. 상담 신청과 안내 과정에는 별도 비용이 들지 않습니다.</div>
+    </details>
+  </div>
 </section>
 
 <section class="cta-section" id="consult">
