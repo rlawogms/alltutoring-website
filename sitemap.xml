@@ -72,4 +72,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EA%B2%80%EC%A0%95%EA%B3%A0%EC%8B%9C-%EA%B3%BC%EC%99%B8%ED%99%9C%EC%9A%A9.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EA%B3%BC%EC%99%B8%EB%B9%84-%EA%B8%B0%EC%A4%80.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
