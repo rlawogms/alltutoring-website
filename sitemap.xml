@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://alltutoring-website.co.kr/reviews.html</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://alltutoring-website.co.kr/news.html</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -117,6 +117,24 @@
   <url>
     <loc>https://alltutoring-website.co.kr/news/%EC%98%88%EB%B9%84%EA%B3%A01-%EA%B3%BC%EC%99%B8%EC%A4%80%EB%B9%84.html</loc>
     <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EB%82%B4%EC%8B%A0%EC%88%98%EB%8A%A5-%EA%B3%BC%EC%99%B8%EB%B3%91%ED%96%89.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EC%A0%95%EC%8B%9C%EC%A7%80%EC%9B%90%EC%A0%84%EB%9E%B5-%EA%B3%BC%EC%99%B8%EC%A4%80%EB%B9%84.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EA%B3%BC%EB%AA%A9%EC%88%98-%EC%84%A0%ED%83%9D%EA%B0%80%EC%9D%B4%EB%93%9C.html</loc>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
