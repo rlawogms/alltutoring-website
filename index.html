@@ -138,15 +138,16 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 .navbar {
   position: sticky; top: 0; z-index: 1000;
   background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; gap: 12px;
   padding: 12px 32px;
 }
-.navbar-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0D2B6B; font-size: 16px; text-decoration: none; white-space: nowrap; }
+.navbar-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; color: #0D2B6B; font-size: 16px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
 .navbar-brand img { width: 26px; height: 26px; }
-.navbar-links { display: flex; align-items: center; gap: 20px; }
-.navbar-links a.nav-link { color: #444; font-size: 14px; font-weight: 500; text-decoration: none; padding: 6px 2px; border-bottom: 2px solid transparent; white-space: nowrap; }
+.navbar-links { display: flex; align-items: center; gap: 20px; overflow-x: auto; flex: 1; min-width: 0; scrollbar-width: none; -ms-overflow-style: none; }
+.navbar-links::-webkit-scrollbar { display: none; }
+.navbar-links a.nav-link { color: #444; font-size: 14px; font-weight: 500; text-decoration: none; padding: 6px 2px; border-bottom: 2px solid transparent; white-space: nowrap; flex-shrink: 0; }
 .navbar-links a.nav-link:hover, .navbar-links a.nav-link.active { color: #0D2B6B; border-bottom-color: #FFB400; }
-.navbar-cta { background: #0D2B6B; color: #fff; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 20px; text-decoration: none; white-space: nowrap; }
+.navbar-cta { background: #0D2B6B; color: #fff; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 20px; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
 .navbar-cta:hover { background: #0a2054; }
 @media (max-width: 600px) {
   .navbar { padding: 10px 16px; }
@@ -233,9 +234,10 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
 }
 
 .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); background: #F5F7FB; border-bottom: 1px solid #E0E6F0; }
-.stat-item { padding: 24px 12px; text-align: center; border-right: 1px solid #E0E6F0; }
+.stat-item { padding: 24px 12px; text-align: center; border-right: 1px solid #E0E6F0; min-width: 0; }
+.tuition-mode-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 8px; }
 .stat-item:last-child { border-right: none; }
-.stat-num { font-size: 20px; font-weight: 700; color: #0D2B6B; display: block; }
+.stat-num { font-size: 20px; font-weight: 700; color: #0D2B6B; display: block; word-break: break-all; }
 .stat-label { font-size: 12px; color: #666; margin-top: 4px; }
 
 .section { padding: 52px 40px; }
@@ -436,6 +438,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .features-grid { grid-template-columns: 1fr; }
   .mode-grid { grid-template-columns: 1fr; }
+  .tuition-mode-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 24px; }
   .section, .section-bg, .consult-section { padding: 40px 20px; }
   .footer { padding: 32px 20px; }
@@ -972,7 +975,7 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   <div class="accent-line"></div>
   <h2 class="section-title">수강료 안내</h2>
   <div class="section-sub">※ 선생님과 무료로 레벨테스트를 진행하여 정확한 학습을 피드백하고 관리합니다</div>
-  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px;">
+  <div class="tuition-mode-grid">
     <div style="background:#F0F6FF;border-radius:14px;padding:24px 16px;text-align:center;">
       <div style="font-size:17px;font-weight:700;color:#0D2B6B;margin-bottom:14px;padding-bottom:12px;border-bottom:2px solid #0D2B6B;">비대면 화상 수업</div>
       <div style="margin-bottom:10px;line-height:1.8;font-size:13.5px;color:#333;">가장 합리적인 비용<br><strong>시간당 29,500원~41,000원</strong></div>
