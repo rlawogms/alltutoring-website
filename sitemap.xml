@@ -138,4 +138,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/9%EC%9B%94%EB%AA%A8%EC%9D%98%ED%8F%89%EA%B0%80-%EA%B3%BC%EC%99%B8%EC%83%81%EB%8B%B4.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EA%B3%A03-2%ED%95%99%EA%B8%B0-%EA%B3%BC%EC%99%B8%EB%A7%88%EB%AC%B4%EB%A6%AC.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EC%98%88%EB%B9%84%EA%B3%A02-%EA%B3%BC%EC%99%B8%EC%A4%80%EB%B9%84.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
