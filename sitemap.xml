@@ -258,4 +258,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://alltutoring-website.co.kr/news/%EC%88%98%EC%8B%9C%EA%B2%BD%EC%9F%81%EB%A5%A0-%EC%97%AD%EB%8C%80%EC%B5%9C%EA%B3%A0-%EA%B3%BC%EC%99%B8%EC%83%81%EB%8B%B4.html</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
