@@ -452,6 +452,59 @@ body { font-family: 'Noto Sans KR', sans-serif; color: #1a1a1a; background: #fff
   .footer { padding: 32px 20px; }
   .region-group { flex: 1 1 100%; }
 }
+
+.wm-backdrop {
+  display: none; position: fixed; inset: 0; background: rgba(13,29,64,0.55); z-index: 2000;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.wm-backdrop.show { display: flex; }
+.wm-modal {
+  background: #fff; border-radius: 20px; width: 100%; max-width: 420px; max-height: 88vh; overflow-y: auto;
+  padding: 28px 24px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.wm-close {
+  position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 22px;
+  color: #999; cursor: pointer; padding: 4px; line-height: 1;
+}
+.wm-back {
+  background: none; border: none; color: #0D2B6B; font-size: 13.5px; font-weight: 700; cursor: pointer;
+  padding: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 4px; font-family: 'Noto Sans KR', sans-serif;
+}
+.wm-title { font-size: 19px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+.wm-sub { font-size: 13.5px; color: #777; line-height: 1.6; margin-bottom: 20px; }
+.wm-subject-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wm-subject-card {
+  background: #FFF8ED; border: 1.5px solid #F0E3C8; border-radius: 14px; padding: 20px 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 700; color: #1a1a1a;
+  transition: border-color 0.15s, background 0.15s;
+}
+.wm-subject-card:hover { border-color: #FFB400; background: #FFF3DA; }
+.wm-subject-card i { font-size: 24px; color: #0D2B6B; }
+.wm-grade-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.wm-grade-chip {
+  padding: 9px 14px; border-radius: 20px; border: 1.5px solid #E0E6F0; background: #fff; color: #444;
+  font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Noto Sans KR', sans-serif;
+}
+.wm-grade-chip.active { background: #0D2B6B; border-color: #0D2B6B; color: #fff; }
+.wm-note { background: #F0F6FF; color: #0D2B6B; font-size: 12.5px; padding: 10px 12px; border-radius: 8px; margin-bottom: 18px; line-height: 1.6; }
+.wm-field-label { font-size: 13px; font-weight: 700; color: #1a1a1a; margin: 14px 0 8px; }
+.wm-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wm-modal input, .wm-modal select {
+  width: 100%; padding: 13px 14px; border-radius: 8px; border: 1.5px solid #ddd;
+  background: #fff; color: #1a1a1a; font-size: 13.5px; font-family: 'Noto Sans KR', sans-serif; outline: none; margin-bottom: 10px;
+}
+.wm-modal input:focus, .wm-modal select:focus { border-color: #0D2B6B; }
+.wm-submit {
+  width: 100%; background: #FFB400; color: #0D2B6B; border: none; padding: 15px; border-radius: 10px;
+  font-size: 15px; font-weight: 800; cursor: pointer; font-family: 'Noto Sans KR', sans-serif; margin-top: 6px;
+}
+.wm-submit:hover { background: #e6a200; }
+.wm-submit:disabled { opacity: 0.6; cursor: default; }
+@media (max-width: 420px) {
+  .wm-modal { padding: 24px 18px; }
+  .wm-row2 { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -1588,5 +1641,432 @@ document.addEventListener('click', function(e) {
   }
 </script>
 <script src="school-data.js"></script>
+<div class="wm-backdrop" id="wmBackdrop" onclick="if(event.target===this) wmClose();">
+  <div class="wm-modal">
+    <button class="wm-close" onclick="wmClose()" aria-label="닫기">&times;</button>
+
+    <div id="wmStep1">
+      <div class="wm-title">어떤 도움이 필요하세요?</div>
+      <div class="wm-sub">과목만 고르시면 맞는 선생님을 찾아 연락드립니다</div>
+      <div class="wm-subject-grid">
+        <div class="wm-subject-card" onclick="wmSelectSubject('국어')"><i class="ti ti-book"></i>국어과외</div>
+        <div class="wm-subject-card" onclick="wmSelectSubject('수학')"><i class="ti ti-ruler-2"></i>수학과외</div>
+        <div class="wm-subject-card" onclick="wmSelectSubject('영어')"><i class="ti ti-abc"></i>영어과외</div>
+        <div class="wm-subject-card" onclick="wmSelectSubject('전 과목')"><i class="ti ti-target-arrow"></i>학년별 맞춤 추천</div>
+      </div>
+    </div>
+
+    <div id="wmStep2" style="display:none;">
+      <button class="wm-back" onclick="wmBack()"><i class="ti ti-arrow-left"></i> 다시 고르기</button>
+      <div class="wm-title" id="wmStep2Title">수학과외</div>
+      <div class="wm-sub">학년을 선택하시면 꼭 맞는 선생님을 연결해드립니다</div>
+      <div class="wm-field-label">학년</div>
+      <div class="wm-grade-grid" id="wmGradeGrid">
+        <div class="wm-grade-chip" data-v="초등 1~3학년">초등 1~3학년</div>
+        <div class="wm-grade-chip" data-v="초등 4~6학년">초등 4~6학년</div>
+        <div class="wm-grade-chip" data-v="중학교 1학년">중1</div>
+        <div class="wm-grade-chip" data-v="중학교 2학년">중2</div>
+        <div class="wm-grade-chip" data-v="중학교 3학년">중3</div>
+        <div class="wm-grade-chip" data-v="고등학교 1학년">고1</div>
+        <div class="wm-grade-chip" data-v="고등학교 2학년">고2</div>
+        <div class="wm-grade-chip" data-v="고등학교 3학년">고3</div>
+      </div>
+
+      <form id="wmForm">
+        <div class="wm-field-label">수업 방식</div>
+        <select id="wmMode" required>
+          <option value="" disabled selected>수업 방식 선택</option>
+          <option>대면 방문 수업</option>
+          <option>비대면 화상 수업</option>
+          <option>상관없음 (추천 받고 싶어요)</option>
+        </select>
+        <div class="wm-field-label">연락처</div>
+        <div class="wm-row2">
+          <input type="text" id="wmName" placeholder="예: 김민준" required />
+          <input type="tel" id="wmPhone" placeholder="010-0000-0000" required />
+        </div>
+        <select id="wmRegion" required>
+          <option value="" disabled selected>지역 선택</option>
+          <optgroup label="강원특별자치도">
+            <option>강원특별자치도 강릉시</option>
+            <option>강원특별자치도 고성군</option>
+            <option>강원특별자치도 동해시</option>
+            <option>강원특별자치도 삼척시</option>
+            <option>강원특별자치도 속초시</option>
+            <option>강원특별자치도 양구군</option>
+            <option>강원특별자치도 양양군</option>
+            <option>강원특별자치도 영월군</option>
+            <option>강원특별자치도 원주시</option>
+            <option>강원특별자치도 인제군</option>
+            <option>강원특별자치도 정선군</option>
+            <option>강원특별자치도 철원군</option>
+            <option>강원특별자치도 춘천시</option>
+            <option>강원특별자치도 태백시</option>
+            <option>강원특별자치도 평창군</option>
+            <option>강원특별자치도 홍천군</option>
+            <option>강원특별자치도 화천군</option>
+            <option>강원특별자치도 횡성군</option>
+          </optgroup>
+          <optgroup label="경기도">
+            <option>경기도 가평군</option>
+            <option>경기도 고양시 덕양구</option>
+            <option>경기도 고양시 일산동구</option>
+            <option>경기도 고양시 일산서구</option>
+            <option>경기도 과천시</option>
+            <option>경기도 광명시</option>
+            <option>경기도 광주시</option>
+            <option>경기도 구리시</option>
+            <option>경기도 군포시</option>
+            <option>경기도 김포시</option>
+            <option>경기도 남양주시</option>
+            <option>경기도 동두천시</option>
+            <option>경기도 부천시</option>
+            <option>경기도 성남시 분당구</option>
+            <option>경기도 성남시 수정구</option>
+            <option>경기도 성남시 중원구</option>
+            <option>경기도 수원시 권선구</option>
+            <option>경기도 수원시 영통구</option>
+            <option>경기도 수원시 장안구</option>
+            <option>경기도 수원시 팔달구</option>
+            <option>경기도 시흥시</option>
+            <option>경기도 안산시 단원구</option>
+            <option>경기도 안산시 상록구</option>
+            <option>경기도 안성시</option>
+            <option>경기도 안양시 동안구</option>
+            <option>경기도 안양시 만안구</option>
+            <option>경기도 양주시</option>
+            <option>경기도 양평군</option>
+            <option>경기도 여주시</option>
+            <option>경기도 연천군</option>
+            <option>경기도 오산시</option>
+            <option>경기도 용인시 기흥구</option>
+            <option>경기도 용인시 수지구</option>
+            <option>경기도 용인시 처인구</option>
+            <option>경기도 의왕시</option>
+            <option>경기도 의정부시</option>
+            <option>경기도 이천시</option>
+            <option>경기도 파주시</option>
+            <option>경기도 평택시</option>
+            <option>경기도 포천시</option>
+            <option>경기도 하남시</option>
+            <option>경기도 화성시 동탄구</option>
+            <option>경기도 화성시 만세구</option>
+            <option>경기도 화성시 병점구</option>
+            <option>경기도 화성시 효행구</option>
+          </optgroup>
+          <optgroup label="경상남도">
+            <option>경상남도 거제시</option>
+            <option>경상남도 거창군</option>
+            <option>경상남도 고성군</option>
+            <option>경상남도 김해시</option>
+            <option>경상남도 남해군</option>
+            <option>경상남도 밀양시</option>
+            <option>경상남도 사천시</option>
+            <option>경상남도 산청군</option>
+            <option>경상남도 양산시</option>
+            <option>경상남도 의령군</option>
+            <option>경상남도 진주시</option>
+            <option>경상남도 창녕군</option>
+            <option>경상남도 창원시 마산합포구</option>
+            <option>경상남도 창원시 마산회원구</option>
+            <option>경상남도 창원시 성산구</option>
+            <option>경상남도 창원시 의창구</option>
+            <option>경상남도 창원시 진해구</option>
+            <option>경상남도 통영시</option>
+            <option>경상남도 하동군</option>
+            <option>경상남도 함안군</option>
+            <option>경상남도 함양군</option>
+            <option>경상남도 합천군</option>
+          </optgroup>
+          <optgroup label="경상북도">
+            <option>경상북도 경산시</option>
+            <option>경상북도 경주시</option>
+            <option>경상북도 고령군</option>
+            <option>경상북도 구미시</option>
+            <option>경상북도 김천시</option>
+            <option>경상북도 문경시</option>
+            <option>경상북도 봉화군</option>
+            <option>경상북도 상주시</option>
+            <option>경상북도 성주군</option>
+            <option>경상북도 안동시</option>
+            <option>경상북도 영덕군</option>
+            <option>경상북도 영양군</option>
+            <option>경상북도 영주시</option>
+            <option>경상북도 영천시</option>
+            <option>경상북도 예천군</option>
+            <option>경상북도 울릉군</option>
+            <option>경상북도 울진군</option>
+            <option>경상북도 의성군</option>
+            <option>경상북도 청도군</option>
+            <option>경상북도 청송군</option>
+            <option>경상북도 칠곡군</option>
+            <option>경상북도 포항시 남구</option>
+            <option>경상북도 포항시 북구</option>
+          </optgroup>
+          <optgroup label="대구광역시">
+            <option>대구광역시 군위군</option>
+            <option>대구광역시 남구</option>
+            <option>대구광역시 달서구</option>
+            <option>대구광역시 달성군</option>
+            <option>대구광역시 동구</option>
+            <option>대구광역시 북구</option>
+            <option>대구광역시 서구</option>
+            <option>대구광역시 수성구</option>
+            <option>대구광역시 중구</option>
+          </optgroup>
+          <optgroup label="대전광역시">
+            <option>대전광역시 대덕구</option>
+            <option>대전광역시 동구</option>
+            <option>대전광역시 서구</option>
+            <option>대전광역시 유성구</option>
+            <option>대전광역시 중구</option>
+          </optgroup>
+          <optgroup label="부산광역시">
+            <option>부산광역시 강서구</option>
+            <option>부산광역시 금정구</option>
+            <option>부산광역시 기장군</option>
+            <option>부산광역시 남구</option>
+            <option>부산광역시 동구</option>
+            <option>부산광역시 동래구</option>
+            <option>부산광역시 부산진구</option>
+            <option>부산광역시 북구</option>
+            <option>부산광역시 사상구</option>
+            <option>부산광역시 사하구</option>
+            <option>부산광역시 서구</option>
+            <option>부산광역시 수영구</option>
+            <option>부산광역시 연제구</option>
+            <option>부산광역시 영도구</option>
+            <option>부산광역시 중구</option>
+            <option>부산광역시 해운대구</option>
+          </optgroup>
+          <optgroup label="서울특별시">
+            <option>서울특별시 강남구</option>
+            <option>서울특별시 강동구</option>
+            <option>서울특별시 강북구</option>
+            <option>서울특별시 강서구</option>
+            <option>서울특별시 관악구</option>
+            <option>서울특별시 광진구</option>
+            <option>서울특별시 구로구</option>
+            <option>서울특별시 금천구</option>
+            <option>서울특별시 노원구</option>
+            <option>서울특별시 도봉구</option>
+            <option>서울특별시 동대문구</option>
+            <option>서울특별시 동작구</option>
+            <option>서울특별시 마포구</option>
+            <option>서울특별시 서대문구</option>
+            <option>서울특별시 서초구</option>
+            <option>서울특별시 성동구</option>
+            <option>서울특별시 성북구</option>
+            <option>서울특별시 송파구</option>
+            <option>서울특별시 양천구</option>
+            <option>서울특별시 영등포구</option>
+            <option>서울특별시 용산구</option>
+            <option>서울특별시 은평구</option>
+            <option>서울특별시 종로구</option>
+            <option>서울특별시 중구</option>
+            <option>서울특별시 중랑구</option>
+          </optgroup>
+          <optgroup label="세종특별자치시">
+            <option>세종특별자치시</option>
+          </optgroup>
+          <optgroup label="울산광역시">
+            <option>울산광역시 남구</option>
+            <option>울산광역시 동구</option>
+            <option>울산광역시 북구</option>
+            <option>울산광역시 울주군</option>
+            <option>울산광역시 중구</option>
+          </optgroup>
+          <optgroup label="인천광역시">
+            <option>인천광역시 강화군</option>
+            <option>인천광역시 검단구</option>
+            <option>인천광역시 계양구</option>
+            <option>인천광역시 남동구</option>
+            <option>인천광역시 미추홀구</option>
+            <option>인천광역시 부평구</option>
+            <option>인천광역시 서해구</option>
+            <option>인천광역시 연수구</option>
+            <option>인천광역시 영종구</option>
+            <option>인천광역시 옹진군</option>
+            <option>인천광역시 제물포구</option>
+          </optgroup>
+          <optgroup label="전남광주통합특별시">
+            <option>전남광주통합특별시 강진군</option>
+            <option>전남광주통합특별시 고흥군</option>
+            <option>전남광주통합특별시 곡성군</option>
+            <option>전남광주통합특별시 광산구</option>
+            <option>전남광주통합특별시 광양시</option>
+            <option>전남광주통합특별시 구례군</option>
+            <option>전남광주통합특별시 나주시</option>
+            <option>전남광주통합특별시 남구</option>
+            <option>전남광주통합특별시 담양군</option>
+            <option>전남광주통합특별시 동구</option>
+            <option>전남광주통합특별시 목포시</option>
+            <option>전남광주통합특별시 무안군</option>
+            <option>전남광주통합특별시 보성군</option>
+            <option>전남광주통합특별시 북구</option>
+            <option>전남광주통합특별시 서구</option>
+            <option>전남광주통합특별시 순천시</option>
+            <option>전남광주통합특별시 신안군</option>
+            <option>전남광주통합특별시 여수시</option>
+            <option>전남광주통합특별시 영광군</option>
+            <option>전남광주통합특별시 영암군</option>
+            <option>전남광주통합특별시 완도군</option>
+            <option>전남광주통합특별시 장성군</option>
+            <option>전남광주통합특별시 장흥군</option>
+            <option>전남광주통합특별시 진도군</option>
+            <option>전남광주통합특별시 함평군</option>
+            <option>전남광주통합특별시 해남군</option>
+            <option>전남광주통합특별시 화순군</option>
+          </optgroup>
+          <optgroup label="전북특별자치도">
+            <option>전북특별자치도 고창군</option>
+            <option>전북특별자치도 군산시</option>
+            <option>전북특별자치도 김제시</option>
+            <option>전북특별자치도 남원시</option>
+            <option>전북특별자치도 무주군</option>
+            <option>전북특별자치도 부안군</option>
+            <option>전북특별자치도 순창군</option>
+            <option>전북특별자치도 완주군</option>
+            <option>전북특별자치도 익산시</option>
+            <option>전북특별자치도 임실군</option>
+            <option>전북특별자치도 장수군</option>
+            <option>전북특별자치도 전주시 덕진구</option>
+            <option>전북특별자치도 전주시 완산구</option>
+            <option>전북특별자치도 정읍시</option>
+            <option>전북특별자치도 진안군</option>
+          </optgroup>
+          <optgroup label="제주특별자치도">
+            <option>제주특별자치도 서귀포시</option>
+            <option>제주특별자치도 제주시</option>
+          </optgroup>
+          <optgroup label="충청남도">
+            <option>충청남도 계룡시</option>
+            <option>충청남도 공주시</option>
+            <option>충청남도 금산군</option>
+            <option>충청남도 논산시</option>
+            <option>충청남도 당진시</option>
+            <option>충청남도 보령시</option>
+            <option>충청남도 부여군</option>
+            <option>충청남도 서산시</option>
+            <option>충청남도 서천군</option>
+            <option>충청남도 아산시</option>
+            <option>충청남도 예산군</option>
+            <option>충청남도 천안시 동남구</option>
+            <option>충청남도 천안시 서북구</option>
+            <option>충청남도 청양군</option>
+            <option>충청남도 태안군</option>
+            <option>충청남도 홍성군</option>
+          </optgroup>
+          <optgroup label="충청북도">
+            <option>충청북도 괴산군</option>
+            <option>충청북도 단양군</option>
+            <option>충청북도 보은군</option>
+            <option>충청북도 영동군</option>
+            <option>충청북도 옥천군</option>
+            <option>충청북도 음성군</option>
+            <option>충청북도 제천시</option>
+            <option>충청북도 증평군</option>
+            <option>충청북도 진천군</option>
+            <option>충청북도 청주시 상당구</option>
+            <option>충청북도 청주시 서원구</option>
+            <option>충청북도 청주시 청원구</option>
+            <option>충청북도 청주시 흥덕구</option>
+            <option>충청북도 충주시</option>
+          </optgroup>
+        </select>
+        <input type="text" id="wmAddr" placeholder="읍/면/동 등 상세 주소 입력" required />
+        <button type="submit" class="wm-submit" id="wmSubmitBtn">📞 상담 신청하기</button>
+      </form>
+      <div id="wmResult" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var WM_WEB3FORMS_KEY = "d7779dc6-fc3a-4903-93f8-280aa163bd06";
+  var wmSubject = '';
+
+  window.wmSelectSubject = function(subject) {
+    wmSubject = subject;
+    document.getElementById('wmStep2Title').textContent = subject === '전 과목' ? '학년별 맞춤 추천' : subject + '과외';
+    document.getElementById('wmStep1').style.display = 'none';
+    document.getElementById('wmStep2').style.display = 'block';
+  };
+  window.wmBack = function() {
+    document.getElementById('wmStep2').style.display = 'none';
+    document.getElementById('wmStep1').style.display = 'block';
+  };
+  window.wmClose = function() {
+    document.getElementById('wmBackdrop').classList.remove('show');
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var gradeChips = document.querySelectorAll('.wm-grade-chip');
+    var selectedGrade = '';
+    gradeChips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        gradeChips.forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        selectedGrade = chip.dataset.v;
+      });
+    });
+
+    var regionSelect = document.getElementById('wmRegion');
+
+    document.getElementById('wmForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!selectedGrade) { alert('학년을 선택해주세요.'); return; }
+      var btn = document.getElementById('wmSubmitBtn');
+      var orig = btn.innerHTML;
+      btn.innerHTML = '전송 중...'; btn.disabled = true;
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WM_WEB3FORMS_KEY,
+          _template: 'table',
+          from_name: '전과목 일대일 과외 방문 팝업 상담 신청',
+          subject: '[전과목 일대일 과외] 📋 방문 팝업 상담 신청이 접수됐습니다',
+          '학생 이름': document.getElementById('wmName').value,
+          '학부모 연락처': document.getElementById('wmPhone').value,
+          '학년': selectedGrade,
+          '희망 과목': wmSubject,
+          '수업 방식': document.getElementById('wmMode').value,
+          '지역': regionSelect.value + ' ' + document.getElementById('wmAddr').value,
+          '신청 시각': new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' }),
+          '신청 경로': 'alltutoring-website.co.kr (방문 팝업)'
+        })
+      }).then(function(r) { return r.json(); }).then(function(res) {
+        if (res.success) {
+          document.getElementById('wmForm').style.display = 'none';
+          var d = document.getElementById('wmResult');
+          d.innerHTML = '<div style="text-align:center;padding:24px 10px;background:#e8f5e9;border-radius:12px;color:#2e7d32;">' +
+            '<div style="font-size:26px;margin-bottom:10px;">✅</div>' +
+            '<strong style="font-size:16px;">상담 신청이 접수됐습니다!</strong>' +
+            '<p style="margin-top:8px;font-size:13.5px;color:#444;">담당 매니저가 3시간 이내 연락드립니다.</p></div>';
+          d.style.display = 'block';
+        } else {
+          btn.innerHTML = orig; btn.disabled = false;
+          alert('전송에 실패했습니다. 직접 전화해 주세요: 010-8411-7380');
+        }
+      }).catch(function() {
+        btn.innerHTML = orig; btn.disabled = false;
+        alert('전송에 실패했습니다. 직접 전화해 주세요: 010-8411-7380');
+      });
+    });
+
+    try {
+      if (!sessionStorage.getItem('wmShown')) {
+        sessionStorage.setItem('wmShown', '1');
+        setTimeout(function() {
+          document.getElementById('wmBackdrop').classList.add('show');
+        }, 1200);
+      }
+    } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
